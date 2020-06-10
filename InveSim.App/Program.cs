@@ -171,6 +171,8 @@ namespace InveSim.App
                         sim.Data.Signals.AddSignal(new DateTime(2020, 6, 2), "ACTI", false, true);
                         sim.Data.Signals.AddSignal(new DateTime(2020, 6, 8), "HIFA B", true, false);
                         //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "HIFA B", false, true);
+                        sim.Data.Signals.AddSignal(new DateTime(2020, 6, 11), "ACTI", true, false);
+                        //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ACTI", false, true);
                     }
 
                     sim.Data.Signals.AddSignal(new DateTime(2020, 5, 18), "NETI B", true, false);
@@ -189,6 +191,10 @@ namespace InveSim.App
                     //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "NEWA B", false, true);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 6, 1), "GCOR", true, false);
                     //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "GCOR", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 11), "AAK", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "AAK", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 11), "NETI B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "NETI B", false, true);
 
                 }
 
