@@ -209,7 +209,7 @@ namespace InveSim.App
 
                 var timeCheck = choice == 4 ? 1730 : 1745;
 
-                if (int.Parse(DateTime.Now.ToString("HHmm")) < 1745) until = sim.Data.DateHandler.GetPreviousDate(until);
+                if (int.Parse(DateTime.Now.ToString("HHmm")) < timeCheck) until = sim.Data.DateHandler.GetPreviousDate(until);
 
                 var log = new List<(DateTime date, decimal cash, decimal total)>();
 
