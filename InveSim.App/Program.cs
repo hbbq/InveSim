@@ -126,7 +126,7 @@ namespace InveSim.App
                     sim.Data.Signals.AddSignal(new DateTime(2020, 5, 22), "ARJO B", true, false);
                     //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ARJO B", false, true);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 5, 22), "OASM", true, false);
-                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "OASM", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "OASM", false, true);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 5, 25), "RNBS", true, false);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 6, 3), "RNBS", false, true);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 5, 25), "ENERS", true, false);
@@ -145,6 +145,28 @@ namespace InveSim.App
                     //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "BUSER", false, true);
                     sim.Data.Signals.AddSignal(new DateTime(2020, 6, 4), "SAXG", true, false);
                     //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "SAXG", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "ACARIX", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ACARIX", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "ASSA B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ASSA B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "ATCO B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ATCO B"", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "ATT", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ATT", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "BALD B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "BALD B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "ERIC B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "ERIC B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "FING B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "FING B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "INVE B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "INVE B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "SEB A", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "SEB A", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "SKA B", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "SKA B", false, true);
+                    sim.Data.Signals.AddSignal(new DateTime(2020, 6, 12), "TELIA", true, false);
+                    //sim.Data.Signals.AddSignal(new DateTime(2020, , ), "TELIA", false, true);
 
                 }
 
