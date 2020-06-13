@@ -251,6 +251,8 @@ namespace InveSim.App
 
                 if (int.Parse(DateTime.Now.ToString("HHmm")) < timeCheck) until = sim.Data.DateHandler.GetPreviousDate(until);
 
+                until = sim.Data.DateHandler.GetPreviousDate(until.AddDays(1));
+
                 var log = new List<(DateTime date, decimal cash, decimal total)>();
 
                 while (sim.CurrentDate < until)
