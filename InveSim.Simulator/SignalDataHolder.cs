@@ -19,6 +19,17 @@ namespace InveSim.Simulator
 
         public void AddSignal(DateTime date, string symbol, bool buy, bool sell) => Signals.Add(new Signal(date, symbol, buy, sell));
 
+        public void Add(string symbol, string buyDate, string sellDate)
+        {
+            var buy = DateTime.ParseExact(buyDate, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+            AddSignal(buy, symbol.Trim(), true, false);
+            if (!string.IsNullOrWhiteSpace(sellDate))
+            {
+                var sell = DateTime.ParseExact(sellDate, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                AddSignal(sell, symbol.Trim(), false, true);
+            }
+        }
+
         public class Signal
         {
 
