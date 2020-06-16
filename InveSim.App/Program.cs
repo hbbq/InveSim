@@ -116,7 +116,7 @@ namespace InveSim.App
                     // V22 2020-05-25
                     sig.Add("ENERS   ", "20200525", null);
                     sig.Add("RNBS    ", "20200525", "20200603");
-                    sig.Add("GCOR    ", "20200527", null);
+                    sig.Add("GCOR    ", "20200527", "20200617");
                     sig.Add("CLEM    ", "20200528", null);
 
                     // V23 2020-06-01
