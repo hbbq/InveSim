@@ -163,6 +163,7 @@ namespace InveSim.App
                         sig.Add("HIFA B  ", "20200608", "20200612");
                         sig.Add("ACTI    ", "20200611", null);
                         sig.Add("CAT B   ", "20200611", "20200612");
+                        sig.Add("SJR B   ", "20200617", null);
 
                     }
 
@@ -176,7 +177,8 @@ namespace InveSim.App
                     sig.Add("GCOR    ", "20200601", "20200612");
                     sig.Add("AAK     ", "20200611", "20200612");
                     sig.Add("NETI B  ", "20200611", null);
-                    
+                    sig.Add("WIHL    ", "20200617", null);
+
                 }
 
                 sim.Data.DateHandler.Holidays.Clear();
