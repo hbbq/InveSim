@@ -126,12 +126,12 @@ namespace InveSim.App
                     // V24 2020-06-08
                     sig.Add("ACARIX  ", "20200612", null);
                     sig.Add("ASSA B  ", "20200612", null);
-                    sig.Add("ATCO B  ", "20200612", null);
+                    sig.Add("ATCO B  ", "20200612", "20200618");
                     sig.Add("ATT     ", "20200612", null);
                     sig.Add("BALD B  ", "20200612", null);
                     sig.Add("ERIC B  ", "20200612", null);
                     sig.Add("FING B  ", "20200612", null);
-                    sig.Add("INVE B  ", "20200612", null);
+                    sig.Add("INVE B  ", "20200612", "20200618");
                     sig.Add("SEB A   ", "20200612", null);
                     sig.Add("SKA B   ", "20200612", null);
                     sig.Add("TELIA   ", "20200612", null);
