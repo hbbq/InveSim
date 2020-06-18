@@ -164,6 +164,7 @@ namespace InveSim.App
                         sig.Add("ACTI    ", "20200611", null);
                         sig.Add("CAT B   ", "20200611", "20200612");
                         sig.Add("SJR B   ", "20200617", null);
+                        sig.Add("CTT     ", "20200618", null);
 
                     }
 
@@ -178,6 +179,7 @@ namespace InveSim.App
                     sig.Add("AAK     ", "20200611", "20200612");
                     sig.Add("NETI B  ", "20200611", null);
                     sig.Add("WIHL    ", "20200617", null);
+                    sig.Add("ATRLJ B ", "20200618", null);
 
                 }
 
