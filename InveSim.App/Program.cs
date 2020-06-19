@@ -134,7 +134,7 @@ namespace InveSim.App
                     sig.Add("INVE B  ", "20200612", "20200618");
                     sig.Add("SEB A   ", "20200612", null);
                     sig.Add("SKA B   ", "20200612", null);
-                    sig.Add("TELIA   ", "20200612", null);
+                    sig.Add("TELIA   ", "20200612", "20200622");
 
                     // V25 2020-06-15
                     sig.Add("AAC     ", "20200615", null);
@@ -142,6 +142,9 @@ namespace InveSim.App
                     sig.Add("INDU C  ", "20200615", null);
                     sig.Add("OASM    ", "20200615", null);
                     sig.Add("SAAB B  ", "20200615", null);
+
+                    // V26 2020-06-22
+                    sig.Add("NJOB    ", "20200622", null);
                     
                 }
 
@@ -161,7 +164,7 @@ namespace InveSim.App
                         sig.Add("ACTI    ", "20200528", "20200602");
                         sig.Add("CTT     ", "20200529", "20200612");
                         sig.Add("HIFA B  ", "20200608", "20200612");
-                        sig.Add("ACTI    ", "20200611", null);
+                        sig.Add("ACTI    ", "20200611", "20200622");
                         sig.Add("CAT B   ", "20200611", "20200612");
                         sig.Add("SJR B   ", "20200617", null);
                         sig.Add("CTT     ", "20200618", null);
