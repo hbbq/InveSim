@@ -7,6 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using YahooFinanceAPI;
+using YahooFinanceAPI.Models;
 
 namespace InveSim.App
 {
@@ -144,7 +146,6 @@ namespace InveSim.App
                     sig.Add("SAAB B  ", "20200615", null);
 
                     // V26 2020-06-22
-                    sig.Add("NJOB    ", "20200622", null);
                     
                 }
 
@@ -209,6 +210,8 @@ namespace InveSim.App
 
                 var log = new List<(DateTime date, decimal cash, decimal total)>();
 
+                //sim.Data.Symbols.Clear();
+
                 while (sim.CurrentDate < until)
                 {
                     sim.NextDay();
@@ -219,7 +222,7 @@ namespace InveSim.App
                     System.IO.File.WriteAllText(dataFilePath, data);
                     Console.WriteLine();
                     Console.WriteLine(sim.Details());
-                    Console.WriteLine("Press enter...");
+                    //Console.WriteLine("Press enter...");
                     //Console.ReadLine();
                 }
 
@@ -244,7 +247,35 @@ namespace InveSim.App
 
         private static void Sim_OnNeedData(object sender, Simulator.Simulator.NeedDataEventArgs e)
         {
+            
             decimal? val = null;
+
+            //while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
+            //{
+            //    Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            //}
+
+            //var sym = e.Symbol.Replace(" ", "-") + ".ST";
+
+            //var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            //var p = data.FirstOrDefault(d => d.Date.Equals(e.Date.Date));
+
+            //if (p != null)
+            //{
+            //    switch (e.Point.ToLower())
+            //    {
+            //        case "c": val = (decimal)p.Close; break;
+            //        case "o": val = (decimal)p.Open; break;
+            //    }
+            //}
+
+            //var adt = data.Average(d => d.Volume);
+
+            //var tickSize = GetTickSize(val.Value, (int)Math.Round(adt));
+
+            //val = Math.Round(val.Value / tickSize) * tickSize;
+
             while (!val.HasValue)
             {
                 Console.Write($"{e.Message}: ");
@@ -253,6 +284,24 @@ namespace InveSim.App
             }
             e.Data = val.Value;
         }
+
+        private static decimal GetTickSize(decimal value, int avgTransDay)
+        {
+        
+            var limits = new[] { 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000 };
+
+            var row = limits.Count(l => (decimal)l <= value);
+
+            //row -= 1;
+
+            var sizes = new[] { 0.0005, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500 };
+
+            if (row >= sizes.Length) row = sizes.Length - 1;
+
+            return (decimal)sizes[row];
+
+        }
+
     }
 
 }

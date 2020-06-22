@@ -79,15 +79,15 @@ namespace InveSim.Simulator
             foreach (var signal in signals.Where(s => s.Buy))
             {
                 var sym = Data.GetSymbol(signal.Symbol);
-                if (!sym.GetClose(lastDate).HasValue) sym.SetClose(lastDate, NeedData($"Provide CLOSE for {signal.Symbol} for date {lastDate}"));
-                if (!sym.GetOpen(CurrentDate).HasValue) sym.SetOpen(CurrentDate, NeedData($"Provide OPEN for {signal.Symbol} for date {CurrentDate}"));
-                if (!sym.GetClose(CurrentDate).HasValue) sym.SetClose(CurrentDate, NeedData($"Provide CLOSE for {signal.Symbol} for date {CurrentDate}"));
+                if (!sym.GetClose(lastDate).HasValue) sym.SetClose(lastDate, NeedData($"Provide CLOSE for {signal.Symbol} for date {lastDate}", signal.Symbol, "C", lastDate));
+                if (!sym.GetOpen(CurrentDate).HasValue) sym.SetOpen(CurrentDate, NeedData($"Provide OPEN for {signal.Symbol} for date {CurrentDate}", signal.Symbol, "O", CurrentDate));
+                if (!sym.GetClose(CurrentDate).HasValue) sym.SetClose(CurrentDate, NeedData($"Provide CLOSE for {signal.Symbol} for date {CurrentDate}", signal.Symbol, "C", CurrentDate));
             }
 
             foreach (var signal in signals.Where(s => s.Sell))
             {
                 var sym = Data.GetSymbol(signal.Symbol);
-                if (!sym.GetOpen(CurrentDate).HasValue) sym.SetOpen(CurrentDate, NeedData($"Provide OPEN for {signal.Symbol} for date {CurrentDate}"));
+                if (!sym.GetOpen(CurrentDate).HasValue) sym.SetOpen(CurrentDate, NeedData($"Provide OPEN for {signal.Symbol} for date {CurrentDate}", signal.Symbol, "O", CurrentDate));
             }
 
             foreach(var signal in signals.Where(s => s.Buy).OrderByDescending(s => Data.GetSymbol(s.Symbol).GetClose(lastDate)))
@@ -128,7 +128,7 @@ namespace InveSim.Simulator
             foreach(var holding in Holdings)
             {
                 var sym = Data.GetSymbol(holding.Symbol);
-                if(!sym.GetClose(CurrentDate).HasValue) sym.SetClose(CurrentDate, NeedData($"Provide CLOSE for {holding.Symbol} for date {CurrentDate}"));
+                if(!sym.GetClose(CurrentDate).HasValue) sym.SetClose(CurrentDate, NeedData($"Provide CLOSE for {holding.Symbol} for date {CurrentDate}", holding.Symbol, "C", CurrentDate));
                 holding.CurrentPrice = sym.GetClose(CurrentDate).Value;
             }
 
@@ -139,6 +139,9 @@ namespace InveSim.Simulator
 
             public string Message { get; set; }
             public decimal Data { get; set; }
+            public string Symbol { get; set; }
+            public string Point { get; set; }
+            public DateTime Date { get; set; }
 
         }
 
@@ -146,9 +149,9 @@ namespace InveSim.Simulator
 
         public event NeedDataEventHandler OnNeedData;
 
-        protected decimal NeedData(string message)
+        protected decimal NeedData(string message, string symbol, string point, DateTime date)
         {
-            var args = new NeedDataEventArgs { Message = message };
+            var args = new NeedDataEventArgs { Message = message, Symbol = symbol, Point = point, Date = date };
             OnNeedData?.Invoke(this, args);
             return args.Data;
         }
