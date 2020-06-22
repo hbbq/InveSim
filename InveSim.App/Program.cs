@@ -116,7 +116,7 @@ namespace InveSim.App
                     sig.Add("OASM    ", "20200522", "20200612");
 
                     // V22 2020-05-25
-                    sig.Add("ENERS   ", "20200525", null);
+                    sig.Add("ENERS   ", "20200525", "20200623");
                     sig.Add("RNBS    ", "20200525", "20200603");
                     sig.Add("GCOR    ", "20200527", "20200617");
                     sig.Add("CLEM    ", "20200528", null);
@@ -146,7 +146,11 @@ namespace InveSim.App
                     sig.Add("SAAB B  ", "20200615", null);
 
                     // V26 2020-06-22
-                    
+                    sig.Add("CTM     ", "20200623", null);
+                    sig.Add("HOFI    ", "20200623", null);
+                    sig.Add("NDA SE  ", "20200623", null);
+                    sig.Add("SHOT    ", "20200623", null);
+
                 }
 
                 if (signal)
