@@ -263,6 +263,12 @@ namespace InveSim.App
 
             //var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
 
+            //if (!data.Any())
+            //{
+            //    Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            //    data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            //}
+
             //var p = data.FirstOrDefault(d => d.Date.Equals(e.Date.Date));
 
             //if (p != null)
