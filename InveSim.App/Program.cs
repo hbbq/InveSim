@@ -83,7 +83,7 @@ namespace InveSim.App
 
                     // V19 2020-05-04
                     sig.Add("ASSA B  ", "20200504", "20200529");
-                    sig.Add("ICA     ", "20200504", null);
+                    sig.Add("ICA     ", "20200504", "20200624");
                     sig.Add("NVP     ", "20200504", "20200515");
                     sig.Add("ATCO A  ", "20200505", "20200522");
                     sig.Add("INVE B  ", "20200505", "20200515");
@@ -150,6 +150,7 @@ namespace InveSim.App
                     sig.Add("HOFI    ", "20200623", null);
                     sig.Add("NDA SE  ", "20200623", null);
                     sig.Add("SHOT    ", "20200623", null);
+                    sig.Add("EPRO B  ", "20200624", null);
 
                 }
 
@@ -186,7 +187,7 @@ namespace InveSim.App
                     sig.Add("GCOR    ", "20200601", "20200612");
                     sig.Add("AAK     ", "20200611", "20200612");
                     sig.Add("NETI B  ", "20200611", null);
-                    sig.Add("WIHL    ", "20200617", null);
+                    sig.Add("WIHL    ", "20200617", "20200624");
                     sig.Add("ATRLJ B ", "20200618", "20200623");
 
                 }
