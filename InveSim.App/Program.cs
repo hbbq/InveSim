@@ -101,7 +101,7 @@ namespace InveSim.App
                     sig.Add("HIQ     ", "20200514", "20200601");
                     sig.Add("HUSQ B  ", "20200514", "20200520");
                     sig.Add("LIAB    ", "20200514", "20200527");
-                    sig.Add("OP      ", "20200514", null);
+                    sig.Add("OP      ", "20200514", "20200625");
                     sig.Add("PNDX B  ", "20200514", "20200526");
                     sig.Add("RATO B  ", "20200514", "20200527");
                     sig.Add("SHOT    ", "20200514", "20200528");
@@ -151,6 +151,14 @@ namespace InveSim.App
                     sig.Add("NDA SE  ", "20200623", null);
                     sig.Add("SHOT    ", "20200623", null);
                     sig.Add("EPRO B  ", "20200624", null);
+                    sig.Add("AZN     ", "20200625", null);
+                    sig.Add("SWED A  ", "20200625", null);
+                    sig.Add("FABG    ", "20200625", null);
+                    sig.Add("SKIS B  ", "20200625", null);
+                    sig.Add("BILI A  ", "20200625", null);
+                    sig.Add("COLL    ", "20200625", null);
+                    sig.Add("GENO    ", "20200625", null);
+                    sig.Add("PREC    ", "20200625", null);
 
                 }
 
