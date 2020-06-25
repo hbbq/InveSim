@@ -22,8 +22,9 @@ namespace InveSim.Simulator
         public decimal BuyForMargin;
         public decimal Courtage;
         public int DaysInTrade = 0;
-        public decimal PL = 0;
-        
+        public decimal TotalBuyFor = 0;
+        public decimal TotalSellFor = 0;
+
         public void Setup(bool big)
         {
             CurrentDate = new DateTime(2020, 4, 30);
@@ -32,6 +33,9 @@ namespace InveSim.Simulator
             BuyForFactor = big ? 0.001M : 0.1M;
             BuyForMargin = 0.1M;
             Courtage = 0.0025M;
+            DaysInTrade = 0;
+            TotalBuyFor = 0;
+            TotalSellFor = 0;
         }
 
         public void LoadData(string data) => Data = DataHolder.Deserialize(data);
@@ -60,7 +64,12 @@ namespace InveSim.Simulator
             }
             sb.AppendLine($"Cash: {Cash}");
             sb.AppendLine($"Total: {TotalValue}, Result: {TotalValue-OriginalCash} ({(TotalValue/OriginalCash-1)*100:###0.00}%)");
-            if(DaysInTrade > 0) sb.AppendLine($"DaysInTrades: {DaysInTrade}, Profit:{PL:###0.00}% , Profit/day: {PL / DaysInTrade:###0.00}%");
+            if (DaysInTrade > 0)
+            {
+                var PL = TotalSellFor - TotalBuyFor;
+                var PLP = (TotalSellFor * 100 / TotalBuyFor) - 100;
+                sb.AppendLine($"DaysInTrades: {DaysInTrade}, Profit:{PL:######0.00} ({PLP:###0.00}%) , Profit/day: {PLP / DaysInTrade:###0.00}%");
+            }
             return sb.ToString();
         }
 
@@ -116,7 +125,8 @@ namespace InveSim.Simulator
                     Cash += soldfor;
                     Holdings.Remove(holding);
                     Log($"Sold {holding.Count} {signal.Symbol} for {open}. Result: {soldfor - boughtFor:######0.00} ({(soldfor / boughtFor - 1) * 100:####0.00}%)");
-                    PL += (soldfor / boughtFor - 1) * 100;
+                    TotalBuyFor += boughtFor;
+                    TotalSellFor += soldfor;
                     DaysInTrade += (int)(CurrentDate - holding.PurchaseDate).TotalDays;
                 }
                 else
