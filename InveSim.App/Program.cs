@@ -182,6 +182,7 @@ namespace InveSim.App
                         sig.Add("CAT B   ", "20200611", "20200612");
                         sig.Add("SJR B   ", "20200617", null);
                         sig.Add("CTT     ", "20200618", null);
+                        sig.Add("HIFA B  ", "20200626", null);
 
                     }
 
