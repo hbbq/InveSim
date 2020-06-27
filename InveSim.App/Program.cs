@@ -142,13 +142,13 @@ namespace InveSim.App
                     sig.Add("AAC     ", "20200615", null);
                     sig.Add("DUST    ", "20200615", null);
                     sig.Add("INDU C  ", "20200615", null);
-                    sig.Add("OASM    ", "20200615", null);
+                    sig.Add("OASM    ", "20200615", "20200629");
                     sig.Add("SAAB B  ", "20200615", null);
 
                     // V26 2020-06-22
                     sig.Add("CTM     ", "20200623", null);
                     sig.Add("HOFI    ", "20200623", null);
-                    sig.Add("NDA SE  ", "20200623", null);
+                    sig.Add("NDA SE  ", "20200623", "20200629");
                     sig.Add("SHOT    ", "20200623", null);
                     sig.Add("EPRO B  ", "20200624", null);
                     sig.Add("AZN     ", "20200625", null);
@@ -159,6 +159,11 @@ namespace InveSim.App
                     sig.Add("COLL    ", "20200625", null);
                     sig.Add("GENO    ", "20200625", null);
                     sig.Add("PREC    ", "20200625", null);
+
+                    // V27 2020-06-29
+                    sig.Add("ADDV B  ", "20200629", null);
+                    sig.Add("HM B    ", "20200629", null);
+
 
                 }
 
@@ -198,6 +203,7 @@ namespace InveSim.App
                     sig.Add("NETI B  ", "20200611", null);
                     sig.Add("WIHL    ", "20200617", "20200624");
                     sig.Add("ATRLJ B ", "20200618", "20200623");
+                    sig.Add("AZA     ", "20200629", null);
 
                 }
 
