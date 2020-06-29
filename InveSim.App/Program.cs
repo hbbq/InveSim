@@ -163,6 +163,7 @@ namespace InveSim.App
                     // V27 2020-06-29
                     sig.Add("ADDV B  ", "20200629", null);
                     sig.Add("HM B    ", "20200629", null);
+                    sig.Add("OASM    ", "20200630", null);
 
 
                 }
