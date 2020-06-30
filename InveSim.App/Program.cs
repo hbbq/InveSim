@@ -119,7 +119,7 @@ namespace InveSim.App
                     sig.Add("ENERS   ", "20200525", "20200623");
                     sig.Add("RNBS    ", "20200525", "20200603");
                     sig.Add("GCOR    ", "20200527", "20200617");
-                    sig.Add("CLEM    ", "20200528", null);
+                    sig.Add("CLEM    ", "20200528", "20200701");
 
                     // V23 2020-06-01
                     sig.Add("BUSER   ", "20200602", null);
@@ -132,7 +132,7 @@ namespace InveSim.App
                     sig.Add("ATT     ", "20200612", null);
                     sig.Add("BALD B  ", "20200612", null);
                     sig.Add("ERIC B  ", "20200612", null);
-                    sig.Add("FING B  ", "20200612", null);
+                    sig.Add("FING B  ", "20200612", "20200701");
                     sig.Add("INVE B  ", "20200612", "20200618");
                     sig.Add("SEB A   ", "20200612", null);
                     sig.Add("SKA B   ", "20200612", null);
