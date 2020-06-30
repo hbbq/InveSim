@@ -205,6 +205,8 @@ namespace InveSim.App
                     sig.Add("WIHL    ", "20200617", "20200624");
                     sig.Add("ATRLJ B ", "20200618", "20200623");
                     sig.Add("AZA     ", "20200629", null);
+                    sig.Add("FING B  ", "20200629", "20200630");
+
 
                 }
 
