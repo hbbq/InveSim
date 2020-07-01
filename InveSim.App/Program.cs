@@ -164,6 +164,7 @@ namespace InveSim.App
                     sig.Add("ADDV B  ", "20200629", null);
                     sig.Add("HM B    ", "20200629", null);
                     sig.Add("OASM    ", "20200630", null);
+                    sig.Add("SENS    ", "20200702", null);
 
 
                 }
