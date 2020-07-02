@@ -191,6 +191,7 @@ namespace InveSim.App
                         sig.Add("CTT     ", "20200618", "20200701");
                         sig.Add("HIFA B  ", "20200626", null);
                         sig.Add("CAT B   ", "20200702", null);
+                        sig.Add("CTT     ", "20200703", null);
 
                     }
 
@@ -210,6 +211,8 @@ namespace InveSim.App
                     sig.Add("FING B  ", "20200629", "20200630");
                     sig.Add("EOLU B  ", "20200701", null);
                     sig.Add("AZA     ", "20200702", null);
+                    sig.Add("GCOR    ", "20200703", null);
+                    sig.Add("WIHL    ", "20200703", null);
 
 
                 }
