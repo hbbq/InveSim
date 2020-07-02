@@ -156,7 +156,7 @@ namespace InveSim.App
                     sig.Add("FABG    ", "20200625", null);
                     sig.Add("SKIS B  ", "20200625", null);
                     sig.Add("BILI A  ", "20200625", null);
-                    sig.Add("COLL    ", "20200625", null);
+                    sig.Add("COLL    ", "20200625", "20200703");
                     sig.Add("GENO    ", "20200625", null);
                     sig.Add("PREC    ", "20200625", null);
 
@@ -190,6 +190,7 @@ namespace InveSim.App
                         sig.Add("SJR B   ", "20200617", null);
                         sig.Add("CTT     ", "20200618", "20200701");
                         sig.Add("HIFA B  ", "20200626", null);
+                        sig.Add("CAT B   ", "20200702", null);
 
                     }
 
@@ -202,12 +203,13 @@ namespace InveSim.App
                     sig.Add("NEWA B  ", "20200527", "20200612");
                     sig.Add("GCOR    ", "20200601", "20200612");
                     sig.Add("AAK     ", "20200611", "20200612");
-                    sig.Add("NETI B  ", "20200611", null);
+                    sig.Add("NETI B  ", "20200611", "20200702");
                     sig.Add("WIHL    ", "20200617", "20200624");
                     sig.Add("ATRLJ B ", "20200618", "20200623");
                     sig.Add("AZA     ", "20200629", "20200701");
                     sig.Add("FING B  ", "20200629", "20200630");
                     sig.Add("EOLU B  ", "20200701", null);
+                    sig.Add("AZA     ", "20200702", null);
 
 
                 }
