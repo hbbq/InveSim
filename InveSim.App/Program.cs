@@ -140,7 +140,7 @@ namespace InveSim.App
 
                     // V25 2020-06-15
                     sig.Add("AAC     ", "20200615", null);
-                    sig.Add("DUST    ", "20200615", null);
+                    sig.Add("DUST    ", "20200615", "20200706");
                     sig.Add("INDU C  ", "20200615", null);
                     sig.Add("OASM    ", "20200615", "20200629");
                     sig.Add("SAAB B  ", "20200615", null);
