@@ -19,6 +19,13 @@ namespace InveSim.App
         static void Main(string[] args)
         {
 
+            //var g = new SignalGenerator { Symbol = "ACARIX" };
+            //g.GenerateSignals();
+
+            //Console.ReadLine();
+
+            //return;
+
             var infoPath = @"Dropbox\info.json";
 
             var jsonPath = Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"), infoPath);
@@ -32,7 +39,7 @@ namespace InveSim.App
             var dataFilePath = Path.Combine(dropboxPath, "Data");
             if (!Directory.Exists(dataFilePath)) Directory.CreateDirectory(dataFilePath);
 
-            dataFilePath = Path.Combine(dataFilePath, "InveSim.json");
+            dataFilePath = Path.Combine(dataFilePath, "InveSim.v2.json");
 
             var sim = new Simulator.Simulator();
 
@@ -60,6 +67,7 @@ namespace InveSim.App
                     Console.WriteLine("2 - Simulate signallista");
                     Console.WriteLine("3 - Simulate signalllist, only high volume");
                     Console.WriteLine("4 - Update values");
+                    Console.WriteLine("5 - Generate signals");
                     Console.WriteLine("0 - Exit");
                     var s = Console.ReadLine();
                     choice = int.TryParse(s, out var x) ? x : -1;
@@ -77,6 +85,51 @@ namespace InveSim.App
                 var signal = choice == 2 || choice == 3 || choice == 4;
 
                 var sig = sim.Data.Signals;
+
+                if (choice == 5)
+                {
+
+                    sig.Signals.Clear();
+
+                    var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+
+                    foreach (var s in symbolList)
+                    {
+                        Console.WriteLine(s);
+
+                        var gen = new SignalGenerator { Symbol = s };
+                        var x = gen.GenerateSignals();
+                        foreach (var d in x.Item1)
+                        {
+                            sig.AddSignal(d, s, true, false);
+                        }
+                        foreach (var d in x.Item2)
+                        {
+                            sig.AddSignal(d, s, false, true);
+                        }
+                    }
+
+                    foreach (var s in sig.Signals)
+                    {
+                        s.Date = sim.Data.DateHandler.GetNextDate(s.Date);
+                    }
+
+                    Console.ReadLine();
+
+                    var mdate = sig.Signals.Max(s => s.Date);
+
+                    Console.WriteLine($"Signals for {mdate:yyyy-MM-dd}");
+
+                    foreach (var s in sig.Signals.Where(x => x.Date.Equals(mdate)))
+                    {
+                        Console.WriteLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                    }
+
+                    Console.ReadLine();
+
+                    continue;
+
+                }
 
                 if (vecko)
                 {
@@ -166,7 +219,6 @@ namespace InveSim.App
                     sig.Add("OASM    ", "20200630", null);
                     sig.Add("SENS    ", "20200702", null);
 
-
                 }
 
                 if (signal)
@@ -218,6 +270,18 @@ namespace InveSim.App
                 }
 
                 sim.Data.DateHandler.Holidays.Clear();
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 4, 19));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 5, 30));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 6, 6));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 6, 10));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 12, 24));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 12, 25));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 12, 26));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2019, 12, 31));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 1, 1));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 1, 6));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 4, 10));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 4, 13));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 5, 1));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 5, 21));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 6, 19));
@@ -280,37 +344,37 @@ namespace InveSim.App
             
             decimal? val = null;
 
-            //while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
-            //{
-            //    Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            //}
+            while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
+            {
+                Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            }
 
-            //var sym = e.Symbol.Replace(" ", "-") + ".ST";
+            var sym = e.Symbol.Replace(" ", "-") + ".ST";
 
-            //var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
 
-            //if (!data.Any())
-            //{
-            //    Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            //    data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
-            //}
+            if (!data.Any())
+            {
+                Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            }
 
-            //var p = data.FirstOrDefault(d => d.Date.Equals(e.Date.Date));
+            var p = data.FirstOrDefault(d => d.Date.Equals(e.Date.Date));
 
-            //if (p != null)
-            //{
-            //    switch (e.Point.ToLower())
-            //    {
-            //        case "c": val = (decimal)p.Close; break;
-            //        case "o": val = (decimal)p.Open; break;
-            //    }
-            //}
+            if (p != null)
+            {
+                switch (e.Point.ToLower())
+                {
+                    case "c": val = (decimal)p.Close; break;
+                    case "o": val = (decimal)p.Open; break;
+                }
+            }
 
-            //var adt = data.Average(d => d.Volume);
+            var adt = data.Average(d => d.Volume);
 
-            //var tickSize = GetTickSize(val.Value, (int)Math.Round(adt));
+            var tickSize = GetTickSize(val.Value, (int)Math.Round(adt));
 
-            //val = Math.Round(val.Value / tickSize) * tickSize;
+            val = Math.Round(val.Value / tickSize) * tickSize;
 
             while (!val.HasValue)
             {
