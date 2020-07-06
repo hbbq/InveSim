@@ -184,7 +184,7 @@ namespace InveSim.App
                     sig.Add("ATCO B  ", "20200612", "20200618");
                     sig.Add("ATT     ", "20200612", null);
                     sig.Add("BALD B  ", "20200612", null);
-                    sig.Add("ERIC B  ", "20200612", null);
+                    sig.Add("ERIC B  ", "20200612", "20200707");
                     sig.Add("FING B  ", "20200612", "20200701");
                     sig.Add("INVE B  ", "20200612", "20200618");
                     sig.Add("SEB A   ", "20200612", null);
