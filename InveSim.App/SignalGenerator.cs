@@ -30,6 +30,12 @@ namespace InveSim.App
 
             var data = Historical.GetPriceAsync(sym, DateTime.Today.AddYears(-2), DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
 
+            if (!data.Any())
+            {
+                Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                data = Historical.GetPriceAsync(sym, DateTime.Today.AddYears(-2), DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            }
+
             var lp = 8;
             var sp = 3;
             var buyLevel = 0.02;
@@ -151,7 +157,8 @@ namespace InveSim.App
                 //Console.WriteLine($"{point.Date}, {buyline}, {sellline}, {sl}");
 
             }
-                return (bs, ss);
+
+            return (bs, ss);
 
         }
 
