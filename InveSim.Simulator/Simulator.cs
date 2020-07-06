@@ -24,10 +24,12 @@ namespace InveSim.Simulator
         public int DaysInTrade = 0;
         public decimal TotalBuyFor = 0;
         public decimal TotalSellFor = 0;
+        public DateTime StartDate;
 
         public void Setup(bool big)
         {
             CurrentDate = new DateTime(2020, 4, 30);
+            StartDate = CurrentDate;
             Cash = big ? 1000000 : 10000;
             OriginalCash = Cash;
             BuyForFactor = big ? 0.001M : 0.1M;
@@ -70,6 +72,21 @@ namespace InveSim.Simulator
                 var PLP = (TotalSellFor * 100 / TotalBuyFor) - 100;
                 sb.AppendLine($"DaysInTrades: {DaysInTrade}, Profit:{PL:######0.00} ({PLP:###0.00}%) , Profit/day: {PLP / DaysInTrade:###0.00}%");
             }
+
+            var days = CurrentDate.Subtract(StartDate).TotalDays;
+
+            if (days > 0)
+            {
+                var factor = TotalValue / OriginalCash;
+
+                var perDay = (Math.Pow((double)factor, 1d / days)) * 100 - 100;
+                var perWeek = (Math.Pow((double)factor, 7d / days)) * 100 - 100;
+                var perMonth = (Math.Pow((double)factor, (365d / 12d) / days)) * 100 - 100;
+                var perYear = (Math.Pow((double)factor, 365d / days)) * 100 - 100;
+
+                sb.AppendLine($"{perDay:###0.00}%/d, {perWeek:###0.00}%/w, {perMonth:###0.00}%/m, {perYear:###0.00}%/y");
+            }
+
             return sb.ToString();
         }
 
