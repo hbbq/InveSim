@@ -36,6 +36,8 @@ namespace InveSim.App
                 data = Historical.GetPriceAsync(sym, DateTime.Today.AddYears(-2), DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
+            if (!data.Any()) throw new Exception($"ERROR, no data for {Symbol}");
+
             var lp = 8;
             var sp = 3;
             var buyLevel = 0.02;

@@ -19,12 +19,18 @@ namespace InveSim.App
         static void Main(string[] args)
         {
 
+            //args = new[] { "autosignals" };
+
             //var g = new SignalGenerator { Symbol = "ACARIX" };
             //g.GenerateSignals();
 
             //Console.ReadLine();
 
             //return;
+
+            var autoSignals = false;
+
+            if (args.Length > 0 && args[0].ToLowerInvariant() == "autosignals") autoSignals = true;
 
             var infoPath = @"Dropbox\info.json";
 
@@ -38,6 +44,12 @@ namespace InveSim.App
 
             var dataFilePath = Path.Combine(dropboxPath, "Data");
             if (!Directory.Exists(dataFilePath)) Directory.CreateDirectory(dataFilePath);
+
+            var signalsPath = Path.Combine(dataFilePath, $"Invesim");
+            if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
+            signalsPath = Path.Combine(signalsPath, $"Signals");
+            if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
+            signalsPath = Path.Combine(signalsPath, $"{DateTime.Today:yyyy-MM-dd}.txt");
 
             dataFilePath = Path.Combine(dataFilePath, "InveSim.v2.json");
 
@@ -60,6 +72,8 @@ namespace InveSim.App
                 Console.WriteLine();
 
                 var choice = -1;
+
+                if (autoSignals) choice = 5;
 
                 while (choice < 0)
                 {
@@ -114,9 +128,23 @@ namespace InveSim.App
                         s.Date = sim.Data.DateHandler.GetNextDate(s.Date);
                     }
 
-                    Console.ReadLine();
 
                     var mdate = sig.Signals.Max(s => s.Date);
+
+                    var sb = new System.Text.StringBuilder();
+
+                    sb.AppendLine($"Signals for {mdate:yyyy-MM-dd}");
+
+                    foreach (var s in sig.Signals.Where(x => x.Date.Equals(mdate)))
+                    {
+                        sb.AppendLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                    }
+
+                    System.IO.File.WriteAllText(signalsPath, sb.ToString());
+
+                    if (autoSignals) return;
+
+                    Console.ReadLine();
 
                     Console.WriteLine($"Signals for {mdate:yyyy-MM-dd}");
 
@@ -342,6 +370,8 @@ namespace InveSim.App
                 }
 
                 Console.ReadLine();
+
+                if (autoSignals) break;
 
             }
 
