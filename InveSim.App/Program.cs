@@ -314,7 +314,19 @@ namespace InveSim.App
                     //data = sim.GetData();
                     //System.IO.File.WriteAllText("data.xml", data);
                     data = sim.GetJsonData();
-                    System.IO.File.WriteAllText(dataFilePath, data);
+                    for (var i = 0; i < 10; i++)
+                    {
+                        try
+                        {
+                            System.IO.File.WriteAllText(dataFilePath, data);
+                            break;
+                        }
+                        catch (System.IO.IOException) when (i < 9)
+                        {
+                            Console.WriteLine("IO Error, retrying...");
+                            System.Threading.Thread.Sleep(1000);
+                        }
+                    }
                     Console.WriteLine();
                     Console.WriteLine(sim.Details());
                     //Console.WriteLine("Press enter...");
