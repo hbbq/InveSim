@@ -192,7 +192,7 @@ namespace InveSim.App
 
                     // V21 2020-05-18
                     sig.Add("ISR     ", "20200518", "20200615");
-                    sig.Add("PAPI    ", "20200519", null);
+                    sig.Add("PAPI    ", "20200519", "20200708");
                     sig.Add("ARJO B  ", "20200522", "20200616");
                     sig.Add("OASM    ", "20200522", "20200612");
 
