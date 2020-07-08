@@ -129,29 +129,39 @@ namespace InveSim.App
                     }
 
 
-                    var mdate = sig.Signals.Max(s => s.Date);
+                    var dt = sig.Signals.Max(s => s.Date);
+
+                    var dates = new List<DateTime>();
+
+                    while(dates.Count < 5)
+                    {
+                        dates.Add(dt);
+                        dt = sig.Signals.Where(s => s.Date < dt).Max(s => s.Date);
+                    }
+
+                    if(!autoSignals) Console.ReadLine();
 
                     var sb = new System.Text.StringBuilder();
 
-                    sb.AppendLine($"Signals for {mdate:yyyy-MM-dd}");
-
-                    foreach (var s in sig.Signals.Where(x => x.Date.Equals(mdate)))
+                    foreach(var d in dates.OrderBy(d => d))
                     {
-                        sb.AppendLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+
+                        sb.AppendLine($"Signals for {d:yyyy-MM-dd}");
+                        Console.WriteLine($"Signals for {d:yyyy-MM-dd}");
+
+                        foreach (var s in sig.Signals.Where(x => x.Date.Equals(d)))
+                        {
+                            sb.AppendLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                            Console.WriteLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                        }
+
+                        sb.AppendLine();
+
                     }
 
                     System.IO.File.WriteAllText(signalsPath, sb.ToString());
 
                     if (autoSignals) return;
-
-                    Console.ReadLine();
-
-                    Console.WriteLine($"Signals for {mdate:yyyy-MM-dd}");
-
-                    foreach (var s in sig.Signals.Where(x => x.Date.Equals(mdate)))
-                    {
-                        Console.WriteLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
-                    }
 
                     Console.ReadLine();
 
