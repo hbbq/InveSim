@@ -257,6 +257,9 @@ namespace InveSim.App
                     sig.Add("OASM    ", "20200630", null);
                     sig.Add("SENS    ", "20200702", null);
 
+                    // V28 2020-07-06
+                    sig.Add("DIOS    ", "20200710", null);
+
                 }
 
                 if (signal)
