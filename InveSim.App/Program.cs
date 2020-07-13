@@ -225,7 +225,7 @@ namespace InveSim.App
                     sig.Add("ERIC B  ", "20200612", "20200707");
                     sig.Add("FING B  ", "20200612", "20200701");
                     sig.Add("INVE B  ", "20200612", "20200618");
-                    sig.Add("SEB A   ", "20200612", null);
+                    sig.Add("SEB A   ", "20200612", "20200714");
                     sig.Add("SKA B   ", "20200612", null);
                     sig.Add("TELIA   ", "20200612", "20200622");
 
@@ -238,7 +238,7 @@ namespace InveSim.App
 
                     // V26 2020-06-22
                     sig.Add("CTM     ", "20200623", null);
-                    sig.Add("HOFI    ", "20200623", null);
+                    sig.Add("HOFI    ", "20200623", "20200714");
                     sig.Add("NDA SE  ", "20200623", "20200629");
                     sig.Add("SHOT    ", "20200623", null);
                     sig.Add("EPRO B  ", "20200624", null);
@@ -259,6 +259,9 @@ namespace InveSim.App
 
                     // V28 2020-07-06
                     sig.Add("DIOS    ", "20200710", null);
+
+                    // V29 2020-07-13
+                    sig.Add("ENERS   ", "20200714", null);
 
                 }
 
