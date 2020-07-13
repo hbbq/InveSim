@@ -220,7 +220,7 @@ namespace InveSim.App
                     sig.Add("ACARIX  ", "20200612", null);
                     sig.Add("ASSA B  ", "20200612", null);
                     sig.Add("ATCO B  ", "20200612", "20200618");
-                    sig.Add("ATT     ", "20200612", null);
+                    sig.Add("ATT     ", "20200612", "20200713");
                     sig.Add("BALD B  ", "20200612", null);
                     sig.Add("ERIC B  ", "20200612", "20200707");
                     sig.Add("FING B  ", "20200612", "20200701");
@@ -230,7 +230,7 @@ namespace InveSim.App
                     sig.Add("TELIA   ", "20200612", "20200622");
 
                     // V25 2020-06-15
-                    sig.Add("AAC     ", "20200615", null);
+                    sig.Add("AAC     ", "20200615", "20200713");
                     sig.Add("DUST    ", "20200615", "20200706");
                     sig.Add("INDU C  ", "20200615", null);
                     sig.Add("OASM    ", "20200615", "20200629");
