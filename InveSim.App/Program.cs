@@ -308,7 +308,7 @@ namespace InveSim.App
                     sig.Add("GCOR    ", "20200703", null);
                     sig.Add("WIHL    ", "20200703", "20200708");
                     sig.Add("ATRLJ B ", "20200707", "20200708");
-                    sig.Add("ATRLJ B ", "20200709", null);
+                    sig.Add("ATRLJ B ", "20200709", "20200713");
 
 
                 }
