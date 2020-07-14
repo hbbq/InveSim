@@ -139,7 +139,7 @@ namespace InveSim.App
                         dt = sig.Signals.Where(s => s.Date < dt).Max(s => s.Date);
                     }
 
-                    if(!autoSignals) Console.ReadLine();
+                    //if(!autoSignals) Console.ReadLine();
 
                     var sb = new System.Text.StringBuilder();
 
@@ -159,7 +159,7 @@ namespace InveSim.App
 
                     }
 
-                    System.IO.File.WriteAllText(signalsPath, sb.ToString());
+                    if (autoSignals) System.IO.File.WriteAllText(signalsPath, sb.ToString());
 
                     if (autoSignals) return;
 
