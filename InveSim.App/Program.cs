@@ -213,7 +213,7 @@ namespace InveSim.App
                     sig.Add("CLEM    ", "20200528", "20200701");
 
                     // V23 2020-06-01
-                    sig.Add("BUSER   ", "20200602", null);
+                    sig.Add("BUSER   ", "20200602", "20200715");
                     sig.Add("SAXG    ", "20200604", null);
 
                     // V24 2020-06-08
