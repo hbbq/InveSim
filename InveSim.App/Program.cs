@@ -217,7 +217,7 @@ namespace InveSim.App
                     sig.Add("SAXG    ", "20200604", null);
 
                     // V24 2020-06-08
-                    sig.Add("ACARIX  ", "20200612", null);
+                    sig.Add("ACARIX  ", "20200612", "20200716");
                     sig.Add("ASSA B  ", "20200612", null);
                     sig.Add("ATCO B  ", "20200612", "20200618");
                     sig.Add("ATT     ", "20200612", "20200713");
@@ -242,7 +242,7 @@ namespace InveSim.App
                     sig.Add("NDA SE  ", "20200623", "20200629");
                     sig.Add("SHOT    ", "20200623", null);
                     sig.Add("EPRO B  ", "20200624", null);
-                    sig.Add("AZN     ", "20200625", null);
+                    sig.Add("AZN     ", "20200625", "20200716");
                     sig.Add("SWED A  ", "20200625", "20200709");
                     sig.Add("FABG    ", "20200625", null);
                     sig.Add("SKIS B  ", "20200625", null);
@@ -252,7 +252,7 @@ namespace InveSim.App
                     sig.Add("PREC    ", "20200625", null);
 
                     // V27 2020-06-29
-                    sig.Add("ADDV B  ", "20200629", null);
+                    sig.Add("ADDV B  ", "20200629", "20200716");
                     sig.Add("HM B    ", "20200629", null);
                     sig.Add("OASM    ", "20200630", null);
                     sig.Add("SENS    ", "20200702", null);
