@@ -180,7 +180,7 @@ namespace InveSim.App
                     sig.Add("INVE B  ", "20200505", "20200515");
                     sig.Add("RECI B  ", "20200505", "20200515");
                     sig.Add("AKEL D  ", "20200507", "20200514");
-                    sig.Add("AXFO    ", "20200507", null);
+                    sig.Add("AXFO    ", "20200507", "20200716");
                     sig.Add("TELIA   ", "20200507", "20200515");
                     sig.Add("INTRUM  ", "20200508", "20200515");
 
@@ -218,7 +218,7 @@ namespace InveSim.App
 
                     // V24 2020-06-08
                     sig.Add("ACARIX  ", "20200612", "20200716");
-                    sig.Add("ASSA B  ", "20200612", null);
+                    sig.Add("ASSA B  ", "20200612", "20200716");
                     sig.Add("ATCO B  ", "20200612", "20200618");
                     sig.Add("ATT     ", "20200612", "20200713");
                     sig.Add("BALD B  ", "20200612", null);
@@ -247,7 +247,7 @@ namespace InveSim.App
                     sig.Add("FABG    ", "20200625", null);
                     sig.Add("SKIS B  ", "20200625", null);
                     sig.Add("BILI A  ", "20200625", null);
-                    sig.Add("COLL    ", "20200625", null);
+                    sig.Add("COLL    ", "20200625", "20200716");
                     sig.Add("GENO    ", "20200625", "20200703");
                     sig.Add("PREC    ", "20200625", null);
 
