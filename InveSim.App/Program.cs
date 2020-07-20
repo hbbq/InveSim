@@ -237,7 +237,7 @@ namespace InveSim.App
                     sig.Add("SAAB B  ", "20200615", "20200720");
 
                     // V26 2020-06-22
-                    sig.Add("CTM     ", "20200623", null);
+                    sig.Add("CTM     ", "20200623", "20200721");
                     sig.Add("HOFI    ", "20200623", "20200714");
                     sig.Add("NDA SE  ", "20200623", "20200629");
                     sig.Add("SHOT    ", "20200623", null);
@@ -266,6 +266,8 @@ namespace InveSim.App
 
                     // V30 2020-07-20
                     sig.Add("SCA B   ", "20200720", null);
+                    sig.Add("GUNN    ", "20200721", null);
+                    sig.Add("SHB A   ", "20200721", null);
 
                 }
 
