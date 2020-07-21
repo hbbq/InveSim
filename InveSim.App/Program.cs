@@ -289,12 +289,15 @@ namespace InveSim.App
                         sig.Add("HIFA B  ", "20200608", "20200612");
                         sig.Add("ACTI    ", "20200611", "20200622");
                         sig.Add("CAT B   ", "20200611", "20200612");
-                        sig.Add("SJR B   ", "20200617", null);
+                        sig.Add("SJR B   ", "20200617", "20200711");
                         sig.Add("CTT     ", "20200618", "20200701");
                         sig.Add("HIFA B  ", "20200626", "20200707");
-                        sig.Add("CAT B   ", "20200702", null);
+                        sig.Add("CAT B   ", "20200702", "20200720");
                         sig.Add("CTT     ", "20200703", null);
                         sig.Add("ACTI    ", "20200708", "20200714");
+                        sig.Add("SJR B   ", "20200720", null);
+                        sig.Add("ACTI    ", "20200721", null);
+                        sig.Add("CAT B   ", "20200721", null);
 
                     }
 
@@ -318,8 +321,10 @@ namespace InveSim.App
                     sig.Add("WIHL    ", "20200703", "20200708");
                     sig.Add("ATRLJ B ", "20200707", "20200708");
                     sig.Add("ATRLJ B ", "20200709", "20200713");
-                    sig.Add("ATRLJ B ", "20200714", null);
+                    sig.Add("ATRLJ B ", "20200714", "20200720");
                     sig.Add("FING B  ", "20200714", null);
+                    sig.Add("AAK     ", "20200716", "20200720");
+                    sig.Add("EOLU B  ", "20200721", null);
 
 
                 }
