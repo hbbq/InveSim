@@ -429,12 +429,12 @@ namespace InveSim.App
 
             var sym = e.Symbol.Replace(" ", "-") + ".ST";
 
-            var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            var data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-5), e.Date.Date.AddDays(5)).ConfigureAwait(false).GetAwaiter().GetResult();
 
             if (!data.Any())
             {
                 Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-1), e.Date.Date.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+                data = Historical.GetPriceAsync(sym, e.Date.Date.AddDays(-5), e.Date.Date.AddDays(5)).ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
             var p = data.FirstOrDefault(d => d.Date.Equals(e.Date.Date));
@@ -450,9 +450,14 @@ namespace InveSim.App
 
             var adt = data.Average(d => d.Volume);
 
-            var tickSize = GetTickSize(val.Value, (int)Math.Round(adt));
+            if (val.HasValue)
+            {
 
-            val = Math.Round(val.Value / tickSize) * tickSize;
+                var tickSize = GetTickSize(val.Value, (int)Math.Round(adt));
+
+                val = Math.Round(val.Value / tickSize) * tickSize;
+
+            }
 
             while (!val.HasValue)
             {
