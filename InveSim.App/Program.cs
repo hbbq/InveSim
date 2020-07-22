@@ -240,7 +240,7 @@ namespace InveSim.App
                     sig.Add("CTM     ", "20200623", "20200721");
                     sig.Add("HOFI    ", "20200623", "20200714");
                     sig.Add("NDA SE  ", "20200623", "20200629");
-                    sig.Add("SHOT    ", "20200623", null);
+                    sig.Add("SHOT    ", "20200623", "20200723");
                     sig.Add("EPRO B  ", "20200624", "20200720");
                     sig.Add("AZN     ", "20200625", "20200716");
                     sig.Add("SWED A  ", "20200625", "20200709");
@@ -268,6 +268,10 @@ namespace InveSim.App
                     sig.Add("SCA B   ", "20200720", null);
                     sig.Add("GUNN    ", "20200721", null);
                     sig.Add("SHB A   ", "20200721", null);
+                    sig.Add("ICA     ", "20200722", null);
+                    sig.Add("NETI B  ", "20200722", null);
+                    sig.Add("SKF B   ", "20200722", null);
+                    sig.Add("LUC     ", "20200723", null);
 
                 }
 
