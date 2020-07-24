@@ -249,7 +249,7 @@ namespace InveSim.App
                     sig.Add("BILI A  ", "20200625", "20200720");
                     sig.Add("COLL    ", "20200625", "20200716");
                     sig.Add("GENO    ", "20200625", "20200703");
-                    sig.Add("PREC    ", "20200625", null);
+                    sig.Add("PREC    ", "20200625", "20200724");
 
                     // V27 2020-06-29
                     sig.Add("ADDV B  ", "20200629", "20200716");
@@ -265,7 +265,7 @@ namespace InveSim.App
                     sig.Add("TOBII   ", "20200717", null);
 
                     // V30 2020-07-20
-                    sig.Add("SCA B   ", "20200720", null);
+                    sig.Add("SCA B   ", "20200720", "20200727");
                     sig.Add("GUNN    ", "20200721", null);
                     sig.Add("SHB A   ", "20200721", null);
                     sig.Add("ICA     ", "20200722", null);
