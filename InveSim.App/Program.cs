@@ -214,7 +214,7 @@ namespace InveSim.App
 
                     // V23 2020-06-01
                     sig.Add("BUSER   ", "20200602", "20200715");
-                    sig.Add("SAXG    ", "20200604", null);
+                    sig.Add("SAXG    ", "20200604", "20200728");
 
                     // V24 2020-06-08
                     sig.Add("ACARIX  ", "20200612", "20200716");
@@ -245,7 +245,7 @@ namespace InveSim.App
                     sig.Add("AZN     ", "20200625", "20200716");
                     sig.Add("SWED A  ", "20200625", "20200709");
                     sig.Add("FABG    ", "20200625", null);
-                    sig.Add("SKIS B  ", "20200625", null);
+                    sig.Add("SKIS B  ", "20200625", "20200728");
                     sig.Add("BILI A  ", "20200625", "20200720");
                     sig.Add("COLL    ", "20200625", "20200716");
                     sig.Add("GENO    ", "20200625", "20200703");
@@ -258,7 +258,7 @@ namespace InveSim.App
                     sig.Add("SENS    ", "20200702", null);
 
                     // V28 2020-07-06
-                    sig.Add("DIOS    ", "20200710", null);
+                    sig.Add("DIOS    ", "20200710", "20200728");
 
                     // V29 2020-07-13
                     sig.Add("ENERS   ", "20200714", null);
@@ -269,9 +269,12 @@ namespace InveSim.App
                     sig.Add("GUNN    ", "20200721", null);
                     sig.Add("SHB A   ", "20200721", null);
                     sig.Add("ICA     ", "20200722", null);
-                    sig.Add("NETI B  ", "20200722", null);
+                    sig.Add("NETI B  ", "20200722", "20200728");
                     sig.Add("SKF B   ", "20200722", null);
                     sig.Add("LUC     ", "20200723", null);
+
+                    // V31 2020-07-27
+                    sig.Add("DUST    ", "20200728", null);
 
                 }
 
