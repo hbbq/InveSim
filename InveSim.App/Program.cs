@@ -226,7 +226,7 @@ namespace InveSim.App
                     sig.Add("FING B  ", "20200612", "20200701");
                     sig.Add("INVE B  ", "20200612", "20200618");
                     sig.Add("SEB A   ", "20200612", "20200714");
-                    sig.Add("SKA B   ", "20200612", null);
+                    sig.Add("SKA B   ", "20200612", "20200731");
                     sig.Add("TELIA   ", "20200612", "20200622");
 
                     // V25 2020-06-15
@@ -275,6 +275,8 @@ namespace InveSim.App
 
                     // V31 2020-07-27
                     sig.Add("DUST    ", "20200728", null);
+                    sig.Add("ASSA B  ", "20200731", null);
+                    sig.Add("CLAS B  ", "20200731", null);
 
                 }
 
