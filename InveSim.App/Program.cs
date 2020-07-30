@@ -270,7 +270,7 @@ namespace InveSim.App
                     sig.Add("SHB A   ", "20200721", null);
                     sig.Add("ICA     ", "20200722", null);
                     sig.Add("NETI B  ", "20200722", "20200728");
-                    sig.Add("SKF B   ", "20200722", null);
+                    sig.Add("SKF B   ", "20200722", "20200730");
                     sig.Add("LUC     ", "20200723", null);
 
                     // V31 2020-07-27
