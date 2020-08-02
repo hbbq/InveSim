@@ -278,6 +278,12 @@ namespace InveSim.App
                     sig.Add("ASSA B  ", "20200731", null);
                     sig.Add("CLAS B  ", "20200731", null);
 
+                    // V32 2020-08-03
+                    sig.Add("ABB     ", "20200803", null);
+                    sig.Add("TELIA   ", "20200803", null);
+                    sig.Add("TREL B  ", "20200803", null);
+                    sig.Add("VOLV B  ", "20200803", null);
+
                 }
 
                 if (signal)
