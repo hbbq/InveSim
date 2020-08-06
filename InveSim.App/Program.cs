@@ -221,7 +221,7 @@ namespace InveSim.App
                     sig.Add("ASSA B  ", "20200612", "20200716");
                     sig.Add("ATCO B  ", "20200612", "20200618");
                     sig.Add("ATT     ", "20200612", "20200713");
-                    sig.Add("BALD B  ", "20200612", null);
+                    sig.Add("BALD B  ", "20200612", "20200807");
                     sig.Add("ERIC B  ", "20200612", "20200707");
                     sig.Add("FING B  ", "20200612", "20200701");
                     sig.Add("INVE B  ", "20200612", "20200618");
@@ -232,7 +232,7 @@ namespace InveSim.App
                     // V25 2020-06-15
                     sig.Add("AAC     ", "20200615", "20200713");
                     sig.Add("DUST    ", "20200615", "20200706");
-                    sig.Add("INDU C  ", "20200615", null);
+                    sig.Add("INDU C  ", "20200615", "20200807");
                     sig.Add("OASM    ", "20200615", "20200629");
                     sig.Add("SAAB B  ", "20200615", "20200720");
 
@@ -262,7 +262,7 @@ namespace InveSim.App
 
                     // V29 2020-07-13
                     sig.Add("ENERS   ", "20200714", null);
-                    sig.Add("TOBII   ", "20200717", null);
+                    sig.Add("TOBII   ", "20200717", "20200807");
 
                     // V30 2020-07-20
                     sig.Add("SCA B   ", "20200720", "20200727");
