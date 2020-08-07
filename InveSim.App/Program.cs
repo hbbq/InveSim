@@ -271,12 +271,12 @@ namespace InveSim.App
                     sig.Add("ICA     ", "20200722", null);
                     sig.Add("NETI B  ", "20200722", "20200728");
                     sig.Add("SKF B   ", "20200722", "20200730");
-                    sig.Add("LUC     ", "20200723", null);
+                    sig.Add("LUC     ", "20200723", "20200810");
 
                     // V31 2020-07-27
                     sig.Add("DUST    ", "20200728", null);
                     sig.Add("ASSA B  ", "20200731", null);
-                    sig.Add("CLAS B  ", "20200731", null);
+                    sig.Add("CLAS B  ", "20200731", "20200810");
 
                     // V32 2020-08-03
                     sig.Add("ABB     ", "20200803", null);
