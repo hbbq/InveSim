@@ -253,7 +253,7 @@ namespace InveSim.App
 
                     // V27 2020-06-29
                     sig.Add("ADDV B  ", "20200629", "20200716");
-                    sig.Add("HM B    ", "20200629", null);
+                    sig.Add("HM B    ", "20200629", "20200811");
                     sig.Add("OASM    ", "20200630", null);
                     sig.Add("SENS    ", "20200702", "20200804");
 
@@ -283,6 +283,10 @@ namespace InveSim.App
                     sig.Add("TELIA   ", "20200803", null);
                     sig.Add("TREL B  ", "20200803", null);
                     sig.Add("VOLV B  ", "20200803", null);
+
+                    // V33 2020-08-10
+                    sig.Add("AZN     ", "20200811", null);
+                    sig.Add("GETI B  ", "20200811", null);
 
                 }
 
