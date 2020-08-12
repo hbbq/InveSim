@@ -268,7 +268,7 @@ namespace InveSim.App
                     sig.Add("SCA B   ", "20200720", "20200727");
                     sig.Add("GUNN    ", "20200721", null);
                     sig.Add("SHB A   ", "20200721", null);
-                    sig.Add("ICA     ", "20200722", null);
+                    sig.Add("ICA     ", "20200722", "20200812");
                     sig.Add("NETI B  ", "20200722", "20200728");
                     sig.Add("SKF B   ", "20200722", "20200730");
                     sig.Add("LUC     ", "20200723", "20200810");
@@ -279,10 +279,10 @@ namespace InveSim.App
                     sig.Add("CLAS B  ", "20200731", "20200810");
 
                     // V32 2020-08-03
-                    sig.Add("ABB     ", "20200803", null);
+                    sig.Add("ABB     ", "20200803", "20200812");
                     sig.Add("TELIA   ", "20200803", null);
-                    sig.Add("TREL B  ", "20200803", null);
-                    sig.Add("VOLV B  ", "20200803", null);
+                    sig.Add("TREL B  ", "20200803", "20200812");
+                    sig.Add("VOLV B  ", "20200803", "20200812");
 
                     // V33 2020-08-10
                     sig.Add("AZN     ", "20200811", null);
