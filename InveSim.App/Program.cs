@@ -288,6 +288,9 @@ namespace InveSim.App
                     sig.Add("AZN     ", "20200811", null);
                     sig.Add("GETI B  ", "20200811", null);
 
+                    // V34 2020-08-17
+                    sig.Add("PNDX B  ", "20200818", null);
+
                 }
 
                 if (signal)
