@@ -244,7 +244,7 @@ namespace InveSim.App
                     sig.Add("EPRO B  ", "20200624", "20200720");
                     sig.Add("AZN     ", "20200625", "20200716");
                     sig.Add("SWED A  ", "20200625", "20200709");
-                    sig.Add("FABG    ", "20200625", null);
+                    sig.Add("FABG    ", "20200625", "20200819");
                     sig.Add("SKIS B  ", "20200625", "20200728");
                     sig.Add("BILI A  ", "20200625", "20200720");
                     sig.Add("COLL    ", "20200625", "20200716");
@@ -290,6 +290,7 @@ namespace InveSim.App
 
                     // V34 2020-08-17
                     sig.Add("PNDX B  ", "20200818", null);
+                    sig.Add("SHOT    ", "20200819", null);
 
                 }
 
