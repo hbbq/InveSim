@@ -290,6 +290,7 @@ namespace InveSim.App
 
                     // V34 2020-08-17
                     sig.Add("PNDX B  ", "20200818", null);
+                    sig.Add("MYFC    ", "20200820", null);
 
                 }
 
