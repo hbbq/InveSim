@@ -294,6 +294,9 @@ namespace InveSim.App
                     sig.Add("MYFC    ", "20200820", null);
                     sig.Add("OP      ", "20200821", null);
 
+                    // V35 2020-08-24
+                    sig.Add("LUNE    ", "20200824", null);
+
                 }
 
                 if (signal)
