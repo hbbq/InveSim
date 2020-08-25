@@ -289,13 +289,14 @@ namespace InveSim.App
                     sig.Add("GETI B  ", "20200811", null);
 
                     // V34 2020-08-17
-                    sig.Add("PNDX B  ", "20200818", null);
+                    sig.Add("PNDX B  ", "20200818", "20200825");
                     sig.Add("SHOT    ", "20200819", null);
                     sig.Add("MYFC    ", "20200820", null);
                     sig.Add("OP      ", "20200821", null);
 
                     // V35 2020-08-24
                     sig.Add("LUNE    ", "20200824", null);
+                    sig.Add("ENZY    ", "20200825", null);
 
                 }
 
