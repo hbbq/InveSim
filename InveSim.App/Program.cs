@@ -274,7 +274,7 @@ namespace InveSim.App
                     sig.Add("LUC     ", "20200723", "20200810");
 
                     // V31 2020-07-27
-                    sig.Add("DUST    ", "20200728", null);
+                    sig.Add("DUST    ", "20200728", "20200827");
                     sig.Add("ASSA B  ", "20200731", null);
                     sig.Add("CLAS B  ", "20200731", "20200810");
 
