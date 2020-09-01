@@ -280,7 +280,7 @@ namespace InveSim.App
 
                     // V32 2020-08-03
                     sig.Add("ABB     ", "20200803", "20200812");
-                    sig.Add("TELIA   ", "20200803", null);
+                    sig.Add("TELIA   ", "20200803", "20200901");
                     sig.Add("TREL B  ", "20200803", "20200812");
                     sig.Add("VOLV B  ", "20200803", "20200812");
 
@@ -297,6 +297,13 @@ namespace InveSim.App
                     // V35 2020-08-24
                     sig.Add("LUNE    ", "20200824", null);
                     sig.Add("ENZY    ", "20200825", null);
+
+                    // V36 2020-09-01
+                    sig.Add("ALFA    ", "20200901", null);
+                    sig.Add("BONAV B ", "20200901", null);
+                    sig.Add("OASM    ", "20200901", null);
+                    sig.Add("SAAB B  ", "20200901", null);
+                    sig.Add("SECU B  ", "20200901", null);
 
                 }
 
