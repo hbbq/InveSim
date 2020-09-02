@@ -296,7 +296,7 @@ namespace InveSim.App
 
                     // V35 2020-08-24
                     sig.Add("LUNE    ", "20200824", null);
-                    sig.Add("ENZY    ", "20200825", null);
+                    sig.Add("ENZY    ", "20200825", "20200902");
 
                     // V36 2020-09-01
                     sig.Add("ALFA    ", "20200901", null);
@@ -304,6 +304,9 @@ namespace InveSim.App
                     sig.Add("OASM    ", "20200901", null);
                     sig.Add("SAAB B  ", "20200901", null);
                     sig.Add("SECU B  ", "20200901", null);
+                    sig.Add("AOI     ", "20200902", null);
+                    sig.Add("GCOR    ", "20200902", null);
+                    sig.Add("OBAB    ", "20200902", null);
 
                 }
 
