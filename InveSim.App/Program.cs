@@ -307,6 +307,8 @@ namespace InveSim.App
                     sig.Add("AOI     ", "20200902", null);
                     sig.Add("GCOR    ", "20200902", null);
                     sig.Add("OBAB    ", "20200902", null);
+                    sig.Add("BMAX    ", "20200903", null);
+                    sig.Add("IPCO    ", "20200903", null);
 
                 }
 
