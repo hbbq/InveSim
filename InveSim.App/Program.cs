@@ -285,7 +285,7 @@ namespace InveSim.App
                     sig.Add("VOLV B  ", "20200803", "20200812");
 
                     // V33 2020-08-10
-                    sig.Add("AZN     ", "20200811", null);
+                    sig.Add("AZN     ", "20200811", "20200904");
                     sig.Add("GETI B  ", "20200811", "20200831");
 
                     // V34 2020-08-17
@@ -295,7 +295,7 @@ namespace InveSim.App
                     sig.Add("OP      ", "20200821", null);
 
                     // V35 2020-08-24
-                    sig.Add("LUNE    ", "20200824", null);
+                    sig.Add("LUNE    ", "20200824", "20200904");
                     sig.Add("ENZY    ", "20200825", "20200902");
 
                     // V36 2020-09-01
@@ -309,6 +309,9 @@ namespace InveSim.App
                     sig.Add("OBAB    ", "20200902", null);
                     sig.Add("BMAX    ", "20200903", null);
                     sig.Add("IPCO    ", "20200903", null);
+                    sig.Add("BETS B  ", "20200904", null);
+                    sig.Add("EPIS B  ", "20200904", null);
+                    sig.Add("PEAB B  ", "20200904", null);
 
                 }
 
