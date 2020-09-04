@@ -410,6 +410,8 @@ namespace InveSim.App
 
                 //sim.Data.Symbols.Clear();
 
+                var lastData = "";
+
                 while (sim.CurrentDate < until)
                 {
                     sim.NextDay();
@@ -417,19 +419,23 @@ namespace InveSim.App
                     //data = sim.GetData();
                     //System.IO.File.WriteAllText("data.xml", data);
                     data = sim.GetJsonData();
-                    for (var i = 0; i < 10; i++)
+                    if (data != lastData)
                     {
-                        try
+                        for (var i = 0; i < 10; i++)
                         {
-                            System.IO.File.WriteAllText(dataFilePath, data);
-                            break;
-                        }
-                        catch (System.IO.IOException) when (i < 9)
-                        {
-                            Console.WriteLine("IO Error, retrying...");
-                            System.Threading.Thread.Sleep(1000);
+                            try
+                            {
+                                System.IO.File.WriteAllText(dataFilePath, data);
+                                break;
+                            }
+                            catch (System.IO.IOException) when (i < 9)
+                            {
+                                Console.WriteLine("IO Error, retrying...");
+                                System.Threading.Thread.Sleep(1000);
+                            }
                         }
                     }
+                    lastData = data;
                     Console.WriteLine();
                     Console.WriteLine(sim.Details());
                     //Console.WriteLine("Press enter...");
