@@ -300,11 +300,11 @@ namespace InveSim.App
 
                     // V36 2020-09-01
                     sig.Add("ALFA    ", "20200901", null);
-                    sig.Add("BONAV B ", "20200901", null);
+                    sig.Add("BONAV B ", "20200901", "20200908");
                     sig.Add("OASM    ", "20200901", null);
                     sig.Add("SAAB B  ", "20200901", null);
                     sig.Add("SECU B  ", "20200901", null);
-                    sig.Add("AOI     ", "20200902", null);
+                    sig.Add("AOI     ", "20200902", "20200908");
                     sig.Add("GCOR    ", "20200902", null);
                     sig.Add("OBAB    ", "20200902", null);
                     sig.Add("BMAX    ", "20200903", null);
