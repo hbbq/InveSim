@@ -298,7 +298,7 @@ namespace InveSim.App
                     sig.Add("LUNE    ", "20200824", "20200904");
                     sig.Add("ENZY    ", "20200825", "20200902");
 
-                    // V36 2020-09-01
+                    // V36 2020-08-31
                     sig.Add("ALFA    ", "20200901", null);
                     sig.Add("BONAV B ", "20200901", "20200908");
                     sig.Add("OASM    ", "20200901", null);
@@ -312,6 +312,9 @@ namespace InveSim.App
                     sig.Add("BETS B  ", "20200904", null);
                     sig.Add("EPIS B  ", "20200904", null);
                     sig.Add("PEAB B  ", "20200904", null);
+
+                    // V37 2020-09-07
+                    sig.Add("NIBE B  ", "20200909", null);
 
                 }
 
