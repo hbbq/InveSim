@@ -311,7 +311,7 @@ namespace InveSim.App
                     sig.Add("IPCO    ", "20200903", null);
                     sig.Add("BETS B  ", "20200904", null);
                     sig.Add("EPIS B  ", "20200904", null);
-                    sig.Add("PEAB B  ", "20200904", null);
+                    sig.Add("PEAB B  ", "20200904", "20200911");
 
                     // V37 2020-09-07
                     sig.Add("NIBE B  ", "20200909", null);
