@@ -261,7 +261,7 @@ namespace InveSim.App
                     sig.Add("DIOS    ", "20200710", "20200728");
 
                     // V29 2020-07-13
-                    sig.Add("ENERS   ", "20200714", null);
+                    sig.Add("ENERS   ", "20200714", "20200916");
                     sig.Add("TOBII   ", "20200717", "20200807");
 
                     // V30 2020-07-20
@@ -275,7 +275,7 @@ namespace InveSim.App
 
                     // V31 2020-07-27
                     sig.Add("DUST    ", "20200728", "20200827");
-                    sig.Add("ASSA B  ", "20200731", null);
+                    sig.Add("ASSA B  ", "20200731", "20200916");
                     sig.Add("CLAS B  ", "20200731", "20200810");
 
                     // V32 2020-08-03
