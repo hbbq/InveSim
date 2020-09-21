@@ -319,7 +319,7 @@ namespace InveSim.App
                     // V39 2020-09-14
                     sig.Add("BAYN    ", "20200915", null);
                     sig.Add("COMBI   ", "20200915", null);
-                    sig.Add("HIQ     ", "20200915", null);
+                    sig.Add("HIQ     ", "20200915", "20200921");
 
                 }
 
