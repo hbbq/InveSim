@@ -299,7 +299,7 @@ namespace InveSim.App
                     sig.Add("ENZY    ", "20200825", "20200902");
 
                     // V36 2020-08-31
-                    sig.Add("ALFA    ", "20200901", null);
+                    sig.Add("ALFA    ", "20200901", "20200922");
                     sig.Add("BONAV B ", "20200901", "20200908");
                     sig.Add("OASM    ", "20200901", "20200918");
                     sig.Add("SAAB B  ", "20200901", null);
@@ -308,8 +308,8 @@ namespace InveSim.App
                     sig.Add("GCOR    ", "20200902", null);
                     sig.Add("OBAB    ", "20200902", null);
                     sig.Add("BMAX    ", "20200903", null);
-                    sig.Add("IPCO    ", "20200903", null);
-                    sig.Add("BETS B  ", "20200904", null);
+                    sig.Add("IPCO    ", "20200903", "20200922");
+                    sig.Add("BETS B  ", "20200904", "20200922");
                     sig.Add("EPIS B  ", "20200904", "20200915");
                     sig.Add("PEAB B  ", "20200904", "20200911");
 
@@ -320,6 +320,11 @@ namespace InveSim.App
                     sig.Add("BAYN    ", "20200915", null);
                     sig.Add("COMBI   ", "20200915", null);
                     sig.Add("HIQ     ", "20200915", "20200921");
+
+                    // V40 2020-09-21
+                    sig.Add("OV      ", "20200922", null);
+                    sig.Add("SSAB A  ", "20200922", null);
+                    sig.Add("TEL2 B  ", "20200922", null);
 
                 }
 
