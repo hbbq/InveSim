@@ -290,7 +290,7 @@ namespace InveSim.App
 
                     // V34 2020-08-17
                     sig.Add("PNDX B  ", "20200818", "20200825");
-                    sig.Add("SHOT    ", "20200819", null);
+                    sig.Add("SHOT    ", "20200819", "20200923");
                     sig.Add("MYFC    ", "20200820", null);
                     sig.Add("OP      ", "20200821", null);
 
@@ -325,6 +325,7 @@ namespace InveSim.App
                     sig.Add("OV      ", "20200922", null);
                     sig.Add("SSAB A  ", "20200922", null);
                     sig.Add("TEL2 B  ", "20200922", null);
+                    sig.Add("CTM     ", "20200923", null);
 
                 }
 
