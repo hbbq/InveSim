@@ -302,7 +302,7 @@ namespace InveSim.App
                     sig.Add("ALFA    ", "20200901", "20200922");
                     sig.Add("BONAV B ", "20200901", "20200908");
                     sig.Add("OASM    ", "20200901", "20200918");
-                    sig.Add("SAAB B  ", "20200901", null);
+                    sig.Add("SAAB B  ", "20200901", "20200925");
                     sig.Add("SECU B  ", "20200901", "20200915");
                     sig.Add("AOI     ", "20200902", "20200908");
                     sig.Add("GCOR    ", "20200902", null);
