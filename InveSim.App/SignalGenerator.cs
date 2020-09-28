@@ -28,12 +28,15 @@ namespace InveSim.App
 
             var sym = Symbol.Replace(" ", "-") + ".ST";
 
-            var data = Historical.GetPriceAsync(sym, DateTime.Today.AddYears(-2), DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+            //var startdate = DateTime.Today.AddYears(-2);
+            var startdate = new DateTime(2018, 1, 1);
+
+            var data = Historical.GetPriceAsync(sym, startdate, DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
 
             if (!data.Any())
             {
                 Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-                data = Historical.GetPriceAsync(sym, DateTime.Today.AddYears(-2), DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
+                data = Historical.GetPriceAsync(sym, startdate, DateTime.Today.AddDays(1)).ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
             if (!data.Any()) throw new Exception($"ERROR, no data for {Symbol}");
