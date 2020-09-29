@@ -266,7 +266,7 @@ namespace InveSim.App
 
                     // V30 2020-07-20
                     sig.Add("SCA B   ", "20200720", "20200727");
-                    sig.Add("GUNN    ", "20200721", null);
+                    sig.Add("GUNN    ", "20200721", "20200929");
                     sig.Add("SHB A   ", "20200721", null);
                     sig.Add("ICA     ", "20200722", "20200812");
                     sig.Add("NETI B  ", "20200722", "20200728");
@@ -307,7 +307,7 @@ namespace InveSim.App
                     sig.Add("AOI     ", "20200902", "20200908");
                     sig.Add("GCOR    ", "20200902", null);
                     sig.Add("OBAB    ", "20200902", null);
-                    sig.Add("BMAX    ", "20200903", null);
+                    sig.Add("BMAX    ", "20200903", "20200929");
                     sig.Add("IPCO    ", "20200903", "20200922");
                     sig.Add("BETS B  ", "20200904", "20200922");
                     sig.Add("EPIS B  ", "20200904", "20200915");
@@ -326,6 +326,9 @@ namespace InveSim.App
                     sig.Add("SSAB A  ", "20200922", null);
                     sig.Add("TEL2 B  ", "20200922", null);
                     sig.Add("CTM     ", "20200923", null);
+
+                    // V41 2020-09-28
+                    sig.Add("EXPRS2  ", "20200929", null);
 
                 }
 
