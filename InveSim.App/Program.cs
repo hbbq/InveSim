@@ -330,6 +330,7 @@ namespace InveSim.App
                     // V41 2020-09-28
                     sig.Add("EXPRS2  ", "20200929", null);
                     sig.Add("INVAJO  ", "20200930", null);
+                    sig.Add("COPP B  ", "20201001", null);
 
                 }
 
