@@ -324,13 +324,14 @@ namespace InveSim.App
                     // V40 2020-09-21
                     sig.Add("OV      ", "20200922", null);
                     sig.Add("SSAB A  ", "20200922", null);
-                    sig.Add("TEL2 B  ", "20200922", null);
+                    sig.Add("TEL2 B  ", "20200922", "20201002");
                     sig.Add("CTM     ", "20200923", "20200930");
 
                     // V41 2020-09-28
                     sig.Add("EXPRS2  ", "20200929", null);
                     sig.Add("INVAJO  ", "20200930", null);
                     sig.Add("COPP B  ", "20201001", null);
+                    sig.Add("FING B  ", "20201002", null);
 
                 }
 
