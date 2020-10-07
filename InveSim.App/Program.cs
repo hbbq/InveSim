@@ -291,7 +291,7 @@ namespace InveSim.App
                     // V34 2020-08-17
                     sig.Add("PNDX B  ", "20200818", "20200825");
                     sig.Add("SHOT    ", "20200819", "20200923");
-                    sig.Add("MYFC    ", "20200820", null);
+                    sig.Add("MYFC    ", "20200820", "20201008");
                     sig.Add("OP      ", "20200821", "20201007");
 
                     // V35 2020-08-24
@@ -332,6 +332,10 @@ namespace InveSim.App
                     sig.Add("INVAJO  ", "20200930", null);
                     sig.Add("COPP B  ", "20201001", null);
                     sig.Add("FING B  ", "20201002", null);
+
+                    // V42 2020-10-05
+                    sig.Add("AXFO    ", "20201008", null);
+                    sig.Add("EPIS B  ", "20201008", null);
 
                 }
 
