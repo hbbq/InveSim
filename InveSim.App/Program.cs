@@ -336,6 +336,7 @@ namespace InveSim.App
                     // V42 2020-10-05
                     sig.Add("AXFO    ", "20201008", null);
                     sig.Add("EPIS B  ", "20201008", null);
+                    sig.Add("MYFC    ", "20201009", null);
 
                 }
 
