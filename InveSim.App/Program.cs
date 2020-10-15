@@ -338,6 +338,9 @@ namespace InveSim.App
                     sig.Add("EPIS B  ", "20201008", null);
                     sig.Add("MYFC    ", "20201009", null);
 
+                    // V43 2020-10-12
+                    sig.Add("AZN     ", "20201015", null);
+
                 }
 
                 if (signal)
