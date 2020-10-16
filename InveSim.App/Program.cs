@@ -331,7 +331,7 @@ namespace InveSim.App
                     sig.Add("EXPRS2  ", "20200929", null);
                     sig.Add("INVAJO  ", "20200930", null);
                     sig.Add("COPP B  ", "20201001", "20201014");
-                    sig.Add("FING B  ", "20201002", null);
+                    sig.Add("FING B  ", "20201002", "20201016");
 
                     // V42 2020-10-05
                     sig.Add("AXFO    ", "20201008", "20201014");
@@ -340,6 +340,9 @@ namespace InveSim.App
 
                     // V43 2020-10-12
                     sig.Add("AZN     ", "20201015", null);
+                    sig.Add("ANOT    ", "20201016", null);
+                    sig.Add("AROC    ", "20201016", null);
+                    sig.Add("GUNN    ", "20201016", null);
 
                 }
 
