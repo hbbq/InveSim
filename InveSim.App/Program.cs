@@ -344,6 +344,11 @@ namespace InveSim.App
                     sig.Add("AROC    ", "20201016", null);
                     sig.Add("GUNN    ", "20201016", null);
 
+                    // V44 2020-10-19
+                    sig.Add("ALELIO  ", "20201020", null);
+                    sig.Add("CLA B   ", "20201020", null);
+                    sig.Add("SNM     ", "20201020", null);
+
                 }
 
                 if (signal)
