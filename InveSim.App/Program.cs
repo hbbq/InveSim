@@ -348,6 +348,10 @@ namespace InveSim.App
                     sig.Add("ALELIO  ", "20201020", null);
                     sig.Add("CLA B   ", "20201020", null);
                     sig.Add("SNM     ", "20201020", null);
+                    sig.Add("BILL    ", "20201021", null);
+                    sig.Add("MTRS    ", "20201021", null);
+                    sig.Add("SKIS B  ", "20201021", null);
+                    sig.Add("SWMA    ", "20201021", null);
 
                 }
 
