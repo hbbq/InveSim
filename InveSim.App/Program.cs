@@ -314,7 +314,7 @@ namespace InveSim.App
                     sig.Add("PEAB B  ", "20200904", "20200911");
 
                     // V37 2020-09-07
-                    sig.Add("NIBE B  ", "20200909", null);
+                    sig.Add("NIBE B  ", "20200909", "20201022");
 
                     // V39 2020-09-14
                     sig.Add("BAYN    ", "20200915", "20200924");
@@ -336,12 +336,12 @@ namespace InveSim.App
                     // V42 2020-10-05
                     sig.Add("AXFO    ", "20201008", "20201014");
                     sig.Add("EPIS B  ", "20201008", null);
-                    sig.Add("MYFC    ", "20201009", null);
+                    sig.Add("MYFC    ", "20201009", "20201022");
 
                     // V43 2020-10-12
-                    sig.Add("AZN     ", "20201015", null);
+                    sig.Add("AZN     ", "20201015", "20201022");
                     sig.Add("ANOT    ", "20201016", null);
-                    sig.Add("AROC    ", "20201016", null);
+                    sig.Add("AROC    ", "20201016", "20201022");
                     sig.Add("GUNN    ", "20201016", null);
 
                     // V44 2020-10-19
@@ -352,6 +352,16 @@ namespace InveSim.App
                     sig.Add("MTRS    ", "20201021", null);
                     sig.Add("SKIS B  ", "20201021", null);
                     sig.Add("SWMA    ", "20201021", null);
+                    sig.Add("ATCO B  ", "20201022", null);
+                    sig.Add("BALD B  ", "20201022", null);
+                    sig.Add("BONAV B ", "20201022", null);
+                    sig.Add("CAST    ", "20201022", null);
+                    sig.Add("CE      ", "20201022", null);
+                    sig.Add("FING B  ", "20201022", null);
+                    sig.Add("LUNE    ", "20201022", null);
+                    sig.Add("NDA SE  ", "20201022", null);
+                    sig.Add("SKA B   ", "20201022", null);
+                    sig.Add("VICO    ", "20201022", null);
 
                 }
 
