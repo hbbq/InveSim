@@ -335,7 +335,7 @@ namespace InveSim.App
 
                     // V42 2020-10-05
                     sig.Add("AXFO    ", "20201008", "20201014");
-                    sig.Add("EPIS B  ", "20201008", null);
+                    sig.Add("EPIS B  ", "20201008", "20201027");
                     sig.Add("MYFC    ", "20201009", "20201022");
 
                     // V43 2020-10-12
@@ -348,9 +348,9 @@ namespace InveSim.App
                     sig.Add("ALELIO  ", "20201020", null);
                     sig.Add("CLA B   ", "20201020", "20201026");
                     sig.Add("SNM     ", "20201020", "20201026");
-                    sig.Add("BILL    ", "20201021", null);
+                    sig.Add("BILL    ", "20201021", "20201027");
                     sig.Add("MTRS    ", "20201021", null);
-                    sig.Add("SKIS B  ", "20201021", null);
+                    sig.Add("SKIS B  ", "20201021", "20201027");
                     sig.Add("SWMA    ", "20201021", null);
                     sig.Add("ATCO B  ", "20201022", null);
                     sig.Add("BALD B  ", "20201022", null);
@@ -366,6 +366,9 @@ namespace InveSim.App
                     // V45 2020-10-26
                     sig.Add("EOLU B  ", "20201026", null);
                     sig.Add("HIQ     ", "20201026", null);
+                    sig.Add("FABG    ", "20201027", null);
+                    sig.Add("LATO B  ", "20201027", null);
+                    sig.Add("NET B   ", "20201027", null);
 
                 }
 
