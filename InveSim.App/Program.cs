@@ -345,7 +345,7 @@ namespace InveSim.App
                     sig.Add("GUNN    ", "20201016", null);
 
                     // V44 2020-10-19
-                    sig.Add("ALELIO  ", "20201020", null);
+                    sig.Add("ALELIO  ", "20201020", "20201028");
                     sig.Add("CLA B   ", "20201020", "20201026");
                     sig.Add("SNM     ", "20201020", "20201026");
                     sig.Add("BILL    ", "20201021", "20201027");
@@ -353,15 +353,15 @@ namespace InveSim.App
                     sig.Add("SKIS B  ", "20201021", "20201027");
                     sig.Add("SWMA    ", "20201021", null);
                     sig.Add("ATCO B  ", "20201022", null);
-                    sig.Add("BALD B  ", "20201022", null);
+                    sig.Add("BALD B  ", "20201022", "20201028");
                     sig.Add("BONAV B ", "20201022", null);
-                    sig.Add("CAST    ", "20201022", null);
-                    sig.Add("CE      ", "20201022", null);
+                    sig.Add("CAST    ", "20201022", "20201028");
+                    sig.Add("CE      ", "20201022", "20201028");
                     sig.Add("FING B  ", "20201022", null);
                     sig.Add("LUNE    ", "20201022", null);
                     sig.Add("NDA SE  ", "20201022", null);
-                    sig.Add("SKA B   ", "20201022", null);
-                    sig.Add("VICO    ", "20201022", null);
+                    sig.Add("SKA B   ", "20201022", "20201028");
+                    sig.Add("VICO    ", "20201022", "20201028");
 
                     // V45 2020-10-26
                     sig.Add("EOLU B  ", "20201026", null);
@@ -369,6 +369,7 @@ namespace InveSim.App
                     sig.Add("FABG    ", "20201027", null);
                     sig.Add("LATO B  ", "20201027", null);
                     sig.Add("NET B   ", "20201027", null);
+                    sig.Add("INTRUM  ", "20201028", null);
 
                 }
 
