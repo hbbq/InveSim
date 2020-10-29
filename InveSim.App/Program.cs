@@ -329,7 +329,7 @@ namespace InveSim.App
 
                     // V41 2020-09-28
                     sig.Add("EXPRS2  ", "20200929", null);
-                    sig.Add("INVAJO  ", "20200930", null);
+                    sig.Add("INVAJO  ", "20200930", "20201029");
                     sig.Add("COPP B  ", "20201001", "20201014");
                     sig.Add("FING B  ", "20201002", "20201016");
 
@@ -340,7 +340,7 @@ namespace InveSim.App
 
                     // V43 2020-10-12
                     sig.Add("AZN     ", "20201015", "20201022");
-                    sig.Add("ANOT    ", "20201016", null);
+                    sig.Add("ANOT    ", "20201016", "20201029");
                     sig.Add("AROC    ", "20201016", "20201022");
                     sig.Add("GUNN    ", "20201016", null);
 
@@ -349,17 +349,17 @@ namespace InveSim.App
                     sig.Add("CLA B   ", "20201020", "20201026");
                     sig.Add("SNM     ", "20201020", "20201026");
                     sig.Add("BILL    ", "20201021", "20201027");
-                    sig.Add("MTRS    ", "20201021", null);
+                    sig.Add("MTRS    ", "20201021", "20201029");
                     sig.Add("SKIS B  ", "20201021", "20201027");
                     sig.Add("SWMA    ", "20201021", null);
-                    sig.Add("ATCO B  ", "20201022", null);
+                    sig.Add("ATCO B  ", "20201022", "20201029");
                     sig.Add("BALD B  ", "20201022", "20201028");
                     sig.Add("BONAV B ", "20201022", null);
                     sig.Add("CAST    ", "20201022", "20201028");
                     sig.Add("CE      ", "20201022", "20201028");
                     sig.Add("FING B  ", "20201022", null);
-                    sig.Add("LUNE    ", "20201022", null);
-                    sig.Add("NDA SE  ", "20201022", null);
+                    sig.Add("LUNE    ", "20201022", "20201029");
+                    sig.Add("NDA SE  ", "20201022", "20201029");
                     sig.Add("SKA B   ", "20201022", "20201028");
                     sig.Add("VICO    ", "20201022", "20201028");
 
@@ -370,6 +370,8 @@ namespace InveSim.App
                     sig.Add("LATO B  ", "20201027", null);
                     sig.Add("NET B   ", "20201027", null);
                     sig.Add("INTRUM  ", "20201028", null);
+                    sig.Add("ARCT    ", "20201029", null);
+                    sig.Add("EVO     ", "20201029", null);
 
                 }
 
