@@ -351,7 +351,7 @@ namespace InveSim.App
                     sig.Add("BILL    ", "20201021", "20201027");
                     sig.Add("MTRS    ", "20201021", "20201029");
                     sig.Add("SKIS B  ", "20201021", "20201027");
-                    sig.Add("SWMA    ", "20201021", null);
+                    sig.Add("SWMA    ", "20201021", "20201030");
                     sig.Add("ATCO B  ", "20201022", "20201029");
                     sig.Add("BALD B  ", "20201022", "20201028");
                     sig.Add("BONAV B ", "20201022", null);
@@ -364,7 +364,7 @@ namespace InveSim.App
                     sig.Add("VICO    ", "20201022", "20201028");
 
                     // V45 2020-10-26
-                    sig.Add("EOLU B  ", "20201026", null);
+                    sig.Add("EOLU B  ", "20201026", "20201030");
                     sig.Add("HIQ     ", "20201026", null);
                     sig.Add("FABG    ", "20201027", null);
                     sig.Add("LATO B  ", "20201027", null);
@@ -372,6 +372,7 @@ namespace InveSim.App
                     sig.Add("INTRUM  ", "20201028", null);
                     sig.Add("ARCT    ", "20201029", null);
                     sig.Add("EVO     ", "20201029", null);
+                    sig.Add("SNM     ", "20201030", null);
 
                 }
 
@@ -449,7 +450,6 @@ namespace InveSim.App
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 5, 1));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 5, 21));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 6, 19));
-                sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 10, 30));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 12, 24));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 12, 25));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 12, 31));
