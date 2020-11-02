@@ -374,6 +374,9 @@ namespace InveSim.App
                     sig.Add("EVO     ", "20201029", null);
                     sig.Add("SNM     ", "20201030", null);
 
+                    // V46 2020-11-02
+                    sig.Add("CLA B   ", "20201102", null);
+
                 }
 
                 if (signal)
