@@ -368,10 +368,10 @@ namespace InveSim.App
                     sig.Add("HIQ     ", "20201026", null);
                     sig.Add("FABG    ", "20201027", "20201110");
                     sig.Add("LATO B  ", "20201027", "20201104");
-                    sig.Add("NET B   ", "20201027", null);
-                    sig.Add("INTRUM  ", "20201028", null);
+                    sig.Add("NET B   ", "20201027", "20201111");
+                    sig.Add("INTRUM  ", "20201028", "20201111");
                     sig.Add("ARCT    ", "20201029", null);
-                    sig.Add("EVO     ", "20201029", null);
+                    sig.Add("EVO     ", "20201029", "20201111");
                     sig.Add("SNM     ", "20201030", null);
 
                     // V46 2020-11-02
