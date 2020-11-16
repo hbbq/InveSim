@@ -365,7 +365,7 @@ namespace InveSim.App
 
                     // V45 2020-10-26
                     sig.Add("EOLU B  ", "20201026", "20201030");
-                    sig.Add("HIQ     ", "20201026", null);
+                    sig.Add("HIQ     ", "20201026", "20201116"); //Avnotering 2020-11-13 72,00kr
                     sig.Add("FABG    ", "20201027", "20201110");
                     sig.Add("LATO B  ", "20201027", "20201104");
                     sig.Add("NET B   ", "20201027", "20201111");
