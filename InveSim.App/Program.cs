@@ -377,6 +377,11 @@ namespace InveSim.App
                     // V46 2020-11-02
                     sig.Add("CLA B   ", "20201102", null);
 
+                    // V47 2020-11-09
+
+                    // V48 2020-11-16
+                    sig.Add("HNSA    ", "20201118", null);
+
                 }
 
                 if (signal)
