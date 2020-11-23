@@ -382,6 +382,9 @@ namespace InveSim.App
                     // V48 2020-11-16
                     sig.Add("HNSA    ", "20201118", null);
 
+                    // V49 2020-11-23
+                    sig.Add("INTRUM  ", "20201123", null);
+
                 }
 
                 if (signal)
