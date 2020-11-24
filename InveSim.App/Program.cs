@@ -380,10 +380,12 @@ namespace InveSim.App
                     // V47 2020-11-09
 
                     // V48 2020-11-16
-                    sig.Add("HNSA    ", "20201118", null);
+                    sig.Add("HNSA    ", "20201118", "20201124");
 
                     // V49 2020-11-23
                     sig.Add("INTRUM  ", "20201123", null);
+                    sig.Add("KLOV B  ", "20201124", null);
+                    sig.Add("LATO B  ", "20201124", null);
 
                 }
 
