@@ -386,6 +386,8 @@ namespace InveSim.App
                     sig.Add("INTRUM  ", "20201123", null);
                     sig.Add("KLOV B  ", "20201124", null);
                     sig.Add("LATO B  ", "20201124", null);
+                    sig.Add("ABB     ", "20201125", null);
+                    sig.Add("BINV    ", "20201125", null);
 
                 }
 
