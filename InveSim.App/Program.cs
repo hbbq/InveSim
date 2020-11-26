@@ -388,6 +388,7 @@ namespace InveSim.App
                     sig.Add("LATO B  ", "20201124", null);
                     sig.Add("ABB     ", "20201125", null);
                     sig.Add("BINV    ", "20201125", null);
+                    sig.Add("ASSA B  ", "20201126", null);
 
                 }
 
