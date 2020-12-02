@@ -342,7 +342,7 @@ namespace InveSim.App
                     sig.Add("AZN     ", "20201015", "20201022");
                     sig.Add("ANOT    ", "20201016", "20201029");
                     sig.Add("AROC    ", "20201016", "20201022");
-                    sig.Add("GUNN    ", "20201016", null);
+                    sig.Add("GUNN    ", "20201016", "20201202"); //Avnotering 25,00kr
 
                     // V43 2020-10-19
                     sig.Add("ALELIO  ", "20201020", "20201028");
@@ -388,7 +388,7 @@ namespace InveSim.App
                     sig.Add("LATO B  ", "20201124", null);
                     sig.Add("ABB     ", "20201125", null);
                     sig.Add("BINV    ", "20201125", null);
-                    sig.Add("ASSA B  ", "20201126", null);
+                    sig.Add("ASSA B  ", "20201126", "20201202");
 
                     // V49 2020-11-30
                     sig.Add("BALD B  ", "20201201", null);
