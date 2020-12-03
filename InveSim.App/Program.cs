@@ -387,12 +387,13 @@ namespace InveSim.App
                     sig.Add("KLOV B  ", "20201124", null);
                     sig.Add("LATO B  ", "20201124", null);
                     sig.Add("ABB     ", "20201125", null);
-                    sig.Add("BINV    ", "20201125", null);
+                    sig.Add("BINV    ", "20201125", "20201203");
                     sig.Add("ASSA B  ", "20201126", "20201202");
 
                     // V49 2020-11-30
                     sig.Add("BALD B  ", "20201201", null);
                     sig.Add("SAAB B  ", "20201201", null);
+                    sig.Add("VOLV B  ", "20201203", null);
 
                 }
 
