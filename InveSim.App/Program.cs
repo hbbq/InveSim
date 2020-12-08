@@ -397,6 +397,7 @@ namespace InveSim.App
 
                     // V50 2020-12-07
                     sig.Add("MEKO    ", "20201207", null);
+                    sig.Add("SBB D   ", "20201208", null);
                 }
 
                 if (signal)
