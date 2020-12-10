@@ -383,7 +383,7 @@ namespace InveSim.App
                     sig.Add("HNSA    ", "20201118", "20201124");
 
                     // V48 2020-11-23
-                    sig.Add("INTRUM  ", "20201123", null);
+                    sig.Add("INTRUM  ", "20201123", "20201210");
                     sig.Add("KLOV B  ", "20201124", null);
                     sig.Add("LATO B  ", "20201124", "20201207");
                     sig.Add("ABB     ", "20201125", null);
@@ -398,6 +398,7 @@ namespace InveSim.App
                     // V50 2020-12-07
                     sig.Add("MEKO    ", "20201207", null);
                     sig.Add("SBB D   ", "20201208", null);
+                    sig.Add("BRIG    ", "20201210", null);
                 }
 
                 if (signal)
