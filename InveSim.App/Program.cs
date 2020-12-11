@@ -393,7 +393,7 @@ namespace InveSim.App
                     // V49 2020-11-30
                     sig.Add("BALD B  ", "20201201", null);
                     sig.Add("SAAB B  ", "20201201", "20201207");
-                    sig.Add("VOLV B  ", "20201203", null);
+                    sig.Add("VOLV B  ", "20201203", "20201211");
 
                     // V50 2020-12-07
                     sig.Add("MEKO    ", "20201207", null);
