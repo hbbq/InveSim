@@ -402,6 +402,9 @@ namespace InveSim.App
 
                     // V51 2020-12-14
                     sig.Add("BOL     ", "20201214", null);
+                    sig.Add("HOFI    ", "20201215", null);
+                    sig.Add("NOKIA SEK", "20201215", null);
+                    sig.Add("SHB A   ", "20201215", null);
 
                 }
 
