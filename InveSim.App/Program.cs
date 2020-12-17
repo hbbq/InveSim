@@ -354,7 +354,7 @@ namespace InveSim.App
                     sig.Add("SWMA    ", "20201021", "20201030");
                     sig.Add("ATCO B  ", "20201022", "20201029");
                     sig.Add("BALD B  ", "20201022", "20201028");
-                    sig.Add("BONAV B ", "20201022", null);
+                    sig.Add("BONAV B ", "20201022", "20201217");
                     sig.Add("CAST    ", "20201022", "20201028");
                     sig.Add("CE      ", "20201022", "20201028");
                     sig.Add("FING B  ", "20201022", "20201130");
