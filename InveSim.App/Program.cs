@@ -408,6 +408,10 @@ namespace InveSim.App
                     sig.Add("ACARIX  ", "20201216", null);
                     sig.Add("ELUX B  ", "20201218", null);
 
+                    // V52 2020-12-21
+                    sig.Add("FING B  ", "20201221", null);
+                    sig.Add("HDA SF  ", "20201221", null);
+
                 }
 
                 if (signal)
