@@ -410,7 +410,7 @@ namespace InveSim.App
 
                     // V52 2020-12-21
                     sig.Add("FING B  ", "20201221", null);
-                    sig.Add("HDA SF  ", "20201221", null);
+                    sig.Add("NDA SE  ", "20201221", null);
 
                 }
 
