@@ -386,24 +386,24 @@ namespace InveSim.App
                     sig.Add("INTRUM  ", "20201123", "20201210");
                     sig.Add("KLOV B  ", "20201124", null);
                     sig.Add("LATO B  ", "20201124", "20201207");
-                    sig.Add("ABB     ", "20201125", null);
+                    sig.Add("ABB     ", "20201125", "20201222");
                     sig.Add("BINV    ", "20201125", "20201203");
                     sig.Add("ASSA B  ", "20201126", "20201202");
 
                     // V49 2020-11-30
-                    sig.Add("BALD B  ", "20201201", null);
+                    sig.Add("BALD B  ", "20201201", "20201222");
                     sig.Add("SAAB B  ", "20201201", "20201207");
                     sig.Add("VOLV B  ", "20201203", "20201211");
 
                     // V50 2020-12-07
                     sig.Add("MEKO    ", "20201207", null);
                     sig.Add("SBB D   ", "20201208", null);
-                    sig.Add("BRIG    ", "20201210", null);
+                    sig.Add("BRIG    ", "20201210", "20201222");
 
                     // V51 2020-12-14
                     sig.Add("BOL     ", "20201214", null);
                     sig.Add("HOFI    ", "20201215", null);
-                    sig.Add("NOKIA SEK", "20201215", null);
+                    sig.Add("NOKIA SEK", "20201215", "20201222");
                     sig.Add("SHB A   ", "20201215", null);
                     sig.Add("ACARIX  ", "20201216", null);
                     sig.Add("ELUX B  ", "20201218", null);
@@ -411,6 +411,7 @@ namespace InveSim.App
                     // V52 2020-12-21
                     sig.Add("FING B  ", "20201221", null);
                     sig.Add("NDA SE  ", "20201221", null);
+                    sig.Add("TELIA   ", "20201222", null);
 
                 }
 
