@@ -405,7 +405,7 @@ namespace InveSim.App
                     sig.Add("HOFI    ", "20201215", null);
                     sig.Add("NOKIA SEK", "20201215", "20201222");
                     sig.Add("SHB A   ", "20201215", null);
-                    sig.Add("ACARIX  ", "20201216", null);
+                    sig.Add("ACARIX  ", "20201216", "20201229");
                     sig.Add("ELUX B  ", "20201218", null);
 
                     // V52 2020-12-21
