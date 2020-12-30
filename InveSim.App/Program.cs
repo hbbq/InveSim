@@ -402,7 +402,7 @@ namespace InveSim.App
 
                     // V51 2020-12-14
                     sig.Add("BOL     ", "20201214", null);
-                    sig.Add("HOFI    ", "20201215", null);
+                    sig.Add("HOFI    ", "20201215", "20201230");
                     sig.Add("NOKIA SEK", "20201215", "20201222");
                     sig.Add("SHB A   ", "20201215", null);
                     sig.Add("ACARIX  ", "20201216", "20201229");
@@ -412,6 +412,9 @@ namespace InveSim.App
                     sig.Add("FING B  ", "20201221", null);
                     sig.Add("NDA SE  ", "20201221", null);
                     sig.Add("TELIA   ", "20201222", null);
+
+                    // V53 2020-12-28
+                    sig.Add("AOI     ", "20201230", null);
 
                 }
 
