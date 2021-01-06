@@ -397,7 +397,7 @@ namespace InveSim.App
 
                     // V50 2020-12-07
                     sig.Add("MEKO    ", "20201207", null);
-                    sig.Add("SBB D   ", "20201208", null);
+                    sig.Add("SBB D   ", "20201208", "20200107");
                     sig.Add("BRIG    ", "20201210", "20201222");
 
                     // V51 2020-12-14
@@ -498,6 +498,11 @@ namespace InveSim.App
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2020, 12, 31));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 1, 1));
                 sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 1, 6));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 4, 6));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 5, 13));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 6, 25));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 12, 24));
+                sim.Data.DateHandler.Holidays.Add(new DateTime(2021, 12, 31));
 
                 Console.WriteLine(sim.Details());
 
