@@ -414,7 +414,7 @@ namespace InveSim.App
                     sig.Add("TELIA   ", "20201222", null);
 
                     // V53 2020-12-28
-                    sig.Add("AOI     ", "20201230", null);
+                    sig.Add("AOI     ", "20201230", "20210111");
 
 
                 }
