@@ -416,6 +416,11 @@ namespace InveSim.App
                     // V53 2020-12-28
                     sig.Add("AOI     ", "20201230", "20210111");
 
+                    // V1 2021-01-11
+                    sig.Add("CLA B   ", "20210112", null);
+                    sig.Add("KNOW    ", "20210112", null);
+                    sig.Add("SOBI    ", "20210113", null);
+
 
                 }
 
