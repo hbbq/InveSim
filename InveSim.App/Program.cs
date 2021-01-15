@@ -372,7 +372,7 @@ namespace InveSim.App
                     sig.Add("INTRUM  ", "20201028", "20201111");
                     sig.Add("ARCT    ", "20201029", null);
                     sig.Add("EVO     ", "20201029", "20201111");
-                    sig.Add("SNM     ", "20201030", null);
+                    sig.Add("SNM     ", "20201030", "20210115");
 
                     // V45 2020-11-02
                     sig.Add("CLA B   ", "20201102", "20201201");
@@ -404,7 +404,7 @@ namespace InveSim.App
                     sig.Add("BOL     ", "20201214", "20210105");
                     sig.Add("HOFI    ", "20201215", "20201230");
                     sig.Add("NOKIA SEK", "20201215", "20201222");
-                    sig.Add("SHB A   ", "20201215", null);
+                    sig.Add("SHB A   ", "20201215", "20210115");
                     sig.Add("ACARIX  ", "20201216", "20201229");
                     sig.Add("ELUX B  ", "20201218", "20210108");
 
