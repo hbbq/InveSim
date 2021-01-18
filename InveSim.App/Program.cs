@@ -418,7 +418,7 @@ namespace InveSim.App
 
                     // V1 2021-01-11
                     sig.Add("CLA B   ", "20210112", null);
-                    sig.Add("KNOW    ", "20210112", null);
+                    sig.Add("KNOW    ", "20210112", "20210118");
                     sig.Add("SOBI    ", "20210113", null);
 
 
