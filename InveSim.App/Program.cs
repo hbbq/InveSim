@@ -125,9 +125,16 @@ namespace InveSim.App
 
                     foreach (var s in sig.Signals)
                     {
-                        s.Date = sim.Data.DateHandler.GetNextDate(s.Date);
+                        s.Date = sim.Data.DateHandler.GetNextDate(s.Date);                        
                     }
 
+                    var active = new List<(DateTime, string)>();
+
+                    foreach (var symbol in sig.Signals.Select(s => s.Symbol).Distinct())
+                    {
+                        var sym = sig.Signals.Where(s => s.Symbol == symbol).OrderByDescending(s => s.Date).First();
+                        if(sym.Buy) active.Add((sym.Date, sym.Symbol));
+                    }
 
                     var dt = sig.Signals.Max(s => s.Date);
 
@@ -157,6 +164,15 @@ namespace InveSim.App
 
                         sb.AppendLine();
 
+                    }
+
+                    sb.AppendLine($"Open");
+                    Console.WriteLine($"Open");
+
+                    foreach (var (date, sym) in active.OrderBy(s => s.Item1))
+                    {
+                        sb.AppendLine($"{date:yyyy-MM-dd} {sym}");
+                        Console.WriteLine($"{date:yyyy-MM-dd} {sym}");
                     }
 
                     if (autoSignals) System.IO.File.WriteAllText(signalsPath, sb.ToString());
@@ -267,7 +283,7 @@ namespace InveSim.App
                     // V30 2020-07-20
                     sig.Add("SCA B   ", "20200720", "20200727");
                     sig.Add("GUNN    ", "20200721", "20200929");
-                    sig.Add("SHB A   ", "20200721", null);
+                    //sig.Add("SHB A   ", "20200721", null);
                     sig.Add("ICA     ", "20200722", "20200812");
                     sig.Add("NETI B  ", "20200722", "20200728");
                     sig.Add("SKF B   ", "20200722", "20200730");
@@ -305,7 +321,7 @@ namespace InveSim.App
                     sig.Add("SAAB B  ", "20200901", "20200925");
                     sig.Add("SECU B  ", "20200901", "20200915");
                     sig.Add("AOI     ", "20200902", "20200908");
-                    sig.Add("GCOR    ", "20200902", null);
+                    //sig.Add("GCOR    ", "20200902", null);
                     sig.Add("OBAB    ", "20200902", "20201012");
                     sig.Add("BMAX    ", "20200903", "20200929");
                     sig.Add("IPCO    ", "20200903", "20200922");
@@ -328,7 +344,7 @@ namespace InveSim.App
                     sig.Add("CTM     ", "20200923", "20200930");
 
                     // V40 2020-09-28
-                    sig.Add("EXPRS2  ", "20200929", null);
+                    //sig.Add("EXPRS2  ", "20200929", null);
                     sig.Add("INVAJO  ", "20200930", "20201029");
                     sig.Add("COPP B  ", "20201001", "20201014");
                     sig.Add("FING B  ", "20201002", "20201016");
@@ -384,7 +400,7 @@ namespace InveSim.App
 
                     // V48 2020-11-23
                     sig.Add("INTRUM  ", "20201123", "20201210");
-                    sig.Add("KLOV B  ", "20201124", null);
+                    //sig.Add("KLOV B  ", "20201124", null);
                     sig.Add("LATO B  ", "20201124", "20201207");
                     sig.Add("ABB     ", "20201125", "20201222");
                     sig.Add("BINV    ", "20201125", "20201203");
