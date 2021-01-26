@@ -386,7 +386,7 @@ namespace InveSim.App
                     sig.Add("LATO B  ", "20201027", "20201104");
                     sig.Add("NET B   ", "20201027", "20201111");
                     sig.Add("INTRUM  ", "20201028", "20201111");
-                    sig.Add("ARCT    ", "20201029", null);
+                    sig.Add("ARCT    ", "20201029", "20210125");
                     sig.Add("EVO     ", "20201029", "20201111");
                     sig.Add("SNM     ", "20201030", "20210115");
 
@@ -427,7 +427,7 @@ namespace InveSim.App
                     // V52 2020-12-21
                     sig.Add("FING B  ", "20201221", "20210104");
                     sig.Add("NDA SE  ", "20201221", null);
-                    sig.Add("TELIA   ", "20201222", null);
+                    sig.Add("TELIA   ", "20201222", "20210121");
 
                     // V53 2020-12-28
                     sig.Add("AOI     ", "20201230", "20210111");
@@ -436,6 +436,14 @@ namespace InveSim.App
                     sig.Add("CLA B   ", "20210112", null);
                     sig.Add("KNOW    ", "20210112", "20210118");
                     sig.Add("SOBI    ", "20210113", null);
+
+                    // V2 2021-01-18
+
+                    // V3 2021-01-25
+                    sig.Add("BRAV    ", "20210126", null);
+                    sig.Add("BULTEN  ", "20210126", null);
+                    sig.Add("LUNE    ", "20210126", null);
+                    sig.Add("TANGI   ", "20210126", null);
 
 
                 }
