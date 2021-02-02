@@ -426,7 +426,7 @@ namespace InveSim.App
 
                     // V52 2020-12-21
                     sig.Add("FING B  ", "20201221", "20210104");
-                    sig.Add("NDA SE  ", "20201221", null);
+                    sig.Add("NDA SE  ", "20201221", "20210201");
                     sig.Add("TELIA   ", "20201222", "20210121");
 
                     // V53 2020-12-28
@@ -443,8 +443,13 @@ namespace InveSim.App
                     sig.Add("BRAV    ", "20210126", null);
                     sig.Add("BULTEN  ", "20210126", null);
                     sig.Add("LUNE    ", "20210126", null);
-                    sig.Add("TANGI   ", "20210126", null);
+                    sig.Add("TANGI   ", "20210126", "20210201");
+                    sig.Add("AZA     ", "20210127", null);
+                    sig.Add("ALFA    ", "20210128", null);
+                    sig.Add("NASO    ", "20210128", null);
+                    sig.Add("SPEQT   ", "20210128", null);
 
+                    // V4 2021-02-01
 
                 }
 
