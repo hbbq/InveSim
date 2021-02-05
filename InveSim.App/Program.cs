@@ -441,11 +441,11 @@ namespace InveSim.App
 
                     // V3 2021-01-25
                     sig.Add("BRAV    ", "20210126", null);
-                    sig.Add("BULTEN  ", "20210126", null);
+                    sig.Add("BULTEN  ", "20210126", "20200203");
                     sig.Add("LUNE    ", "20210126", null);
                     sig.Add("TANGI   ", "20210126", "20210201");
-                    sig.Add("AZA     ", "20210127", null);
-                    sig.Add("ALFA    ", "20210128", null);
+                    sig.Add("AZA     ", "20210127", "20210203");
+                    sig.Add("ALFA    ", "20210128", "20210205");
                     sig.Add("NASO    ", "20210128", null);
                     sig.Add("SPEQT   ", "20210128", null);
 
