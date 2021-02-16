@@ -435,14 +435,14 @@ namespace InveSim.App
                     // V1 2021-01-11
                     sig.Add("CLA B   ", "20210112", null);
                     sig.Add("KNOW    ", "20210112", "20210118");
-                    sig.Add("SOBI    ", "20210113", null);
+                    sig.Add("SOBI    ", "20210113", "20210209");
 
                     // V2 2021-01-18
 
                     // V3 2021-01-25
-                    sig.Add("BRAV    ", "20210126", null);
-                    sig.Add("BULTEN  ", "20210126", "20200203");
-                    sig.Add("LUNE    ", "20210126", null);
+                    sig.Add("BRAV    ", "20210126", "20210215");
+                    sig.Add("BULTEN  ", "20210126", "20210203");
+                    sig.Add("LUNE    ", "20210126", "20210209");
                     sig.Add("TANGI   ", "20210126", "20210201");
                     sig.Add("AZA     ", "20210127", "20210203");
                     sig.Add("ALFA    ", "20210128", "20210205");
@@ -450,6 +450,12 @@ namespace InveSim.App
                     sig.Add("SPEQT   ", "20210128", null);
 
                     // V4 2021-02-01
+
+                    // V5 2021-02-08
+                    sig.Add("ABB     ", "20210208", null);
+                    sig.Add("TELIA   ", "20210209", null);
+                    sig.Add("BINV    ", "20210210", null);
+                    sig.Add("AERO    ", "20210211", null);
 
                 }
 
