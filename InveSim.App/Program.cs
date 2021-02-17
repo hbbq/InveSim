@@ -457,6 +457,13 @@ namespace InveSim.App
                     sig.Add("BINV    ", "20210210", null);
                     sig.Add("AERO    ", "20210211", null);
 
+                    // V6 2021-02-15
+                    sig.Add("EQT     ", "20210217", null);
+                    sig.Add("FING B  ", "20210217", null);
+                    sig.Add("ICA     ", "20210217", null);
+
+
+
                 }
 
                 if (signal)
