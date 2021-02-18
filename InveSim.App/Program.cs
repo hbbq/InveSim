@@ -454,7 +454,7 @@ namespace InveSim.App
                     // V5 2021-02-08
                     sig.Add("ABB     ", "20210208", null);
                     sig.Add("TELIA   ", "20210209", "20210218");
-                    sig.Add("BINV    ", "20210210", null);
+                    sig.Add("BINV    ", "20210210", "20210219");
                     sig.Add("AERO    ", "20210211", null);
 
                     // V6 2021-02-15
@@ -465,6 +465,9 @@ namespace InveSim.App
                     sig.Add("NEWTON  ", "20210218", null);
                     sig.Add("NOKIA SEK", "20210218", null);
                     sig.Add("SKA B   ", "20210218", null);
+                    sig.Add("BOOZT   ", "20210219", null);
+                    sig.Add("CAST    ", "20210219", null);
+                    sig.Add("PCELL   ", "20210219", null);
 
 
 
