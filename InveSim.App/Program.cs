@@ -433,7 +433,7 @@ namespace InveSim.App
                     sig.Add("AOI     ", "20201230", "20210111");
 
                     // V1 2021-01-11
-                    sig.Add("CLA B   ", "20210112", null);
+                    sig.Add("CLA B   ", "20210112", "20210301");
                     sig.Add("KNOW    ", "20210112", "20210118");
                     sig.Add("SOBI    ", "20210113", "20210209");
 
@@ -447,28 +447,43 @@ namespace InveSim.App
                     sig.Add("AZA     ", "20210127", "20210203");
                     sig.Add("ALFA    ", "20210128", "20210205");
                     sig.Add("NASO    ", "20210128", null);
-                    sig.Add("SPEQT   ", "20210128", null);
+                    sig.Add("SPEQT   ", "20210128", "20210303");
 
                     // V4 2021-02-01
 
                     // V5 2021-02-08
-                    sig.Add("ABB     ", "20210208", null);
+                    sig.Add("ABB     ", "20210208", "20210309");
                     sig.Add("TELIA   ", "20210209", "20210218");
                     sig.Add("BINV    ", "20210210", "20210219");
                     sig.Add("AERO    ", "20210211", null);
 
                     // V6 2021-02-15
-                    sig.Add("EQT     ", "20210217", null);
-                    sig.Add("FING B  ", "20210217", null);
+                    sig.Add("EQT     ", "20210217", "20210223");
+                    sig.Add("FING B  ", "20210217", "20210223");
                     sig.Add("ICA     ", "20210217", null);
                     sig.Add("LUG     ", "20210218", null);
                     sig.Add("NEWTON  ", "20210218", null);
                     sig.Add("NOKIA SEK", "20210218", null);
                     sig.Add("SKA B   ", "20210218", null);
-                    sig.Add("BOOZT   ", "20210219", null);
+                    sig.Add("BOOZT   ", "20210219", "20210308");
                     sig.Add("CAST    ", "20210219", null);
-                    sig.Add("PCELL   ", "20210219", null);
+                    sig.Add("PCELL   ", "20210219", "20210226");
 
+                    //V7 2021-02-22
+                    sig.Add("ORES    ", "20210222", "20210303");
+                    sig.Add("ESSITY B", "20210222", null);
+                    sig.Add("ENZY    ", "20210225", "20210308");
+
+                    //V8 2021-03-01
+                    sig.Add("TERRNT B", "20210305", null);
+
+                    //V9 2021-03-08
+                    sig.Add("AAC     ", "20210308", null);
+                    sig.Add("ATCO A  ", "20210308", null);
+                    sig.Add("ATCO B  ", "20210308", null);
+                    sig.Add("ERIC B  ", "20210308", null);
+                    sig.Add("EVO     ", "20210308", null);
+                    sig.Add("TOBIII  ", "20210308", null);
 
 
                 }
