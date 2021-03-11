@@ -139,101 +139,115 @@ namespace InveSim.App
                 if (choice == 5)
                 {
 
-                    sig.Signals.Clear();
-
-                    var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
-                    
-                    var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
-                    var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
-
-                    var TargetSl = new List<(string, double, double)>();
-
-                    foreach (var s in symbolList)
+                    try
                     {
-                        Console.WriteLine(s);
 
-                        var gen = new SignalGenerator { Symbol = s };
-                        var sym = currentlyOpen.Where(i => i.Item2 == s).Select(i => (DateTime?)i.Item1).FirstOrDefault();
-                        if(sym.HasValue)
+                        sig.Signals.Clear();
+
+                        var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+
+                        var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
+                        var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
+
+                        var TargetSl = new List<(string, double, double)>();
+
+                        foreach (var s in symbolList)
                         {
-                            var dte = sim.Data.DateHandler.GetPreviousDate(sym.Value);
-                            gen.ForceBuy = dte;
-                        }
-                        var x = gen.GenerateSignals();
-                        foreach (var d in x.Item1)
-                        {
-                            sig.AddSignal(d, s, true, false);
-                        }
-                        foreach (var d in x.Item2)
-                        {
-                            sig.AddSignal(d, s, false, true);
-                        }
-                        TargetSl.Add((s, gen.Target, gen.StopLoss));
-                    }
+                            Console.WriteLine(s);
 
-                    foreach (var s in sig.Signals)
-                    {
-                        s.Date = sim.Data.DateHandler.GetNextDate(s.Date);                        
-                    }
-
-                    var active = new List<(DateTime, string)>();
-
-                    foreach (var symbol in sig.Signals.Select(s => s.Symbol).Distinct())
-                    {
-                        var sym = sig.Signals.Where(s => s.Symbol == symbol).OrderByDescending(s => s.Date).First();
-                        if(sym.Buy) active.Add((sym.Date, sym.Symbol));
-                    }
-
-                    var dt = sig.Signals.Max(s => s.Date);
-
-                    var dates = new List<DateTime>();
-
-                    while(dates.Count < 5)
-                    {
-                        dates.Add(dt);
-                        dt = sig.Signals.Where(s => s.Date < dt).Max(s => s.Date);
-                    }
-
-                    //if(!autoSignals) Console.ReadLine();
-
-                    var sb = new System.Text.StringBuilder();
-
-                    foreach(var d in dates.OrderBy(d => d))
-                    {
-
-                        sb.AppendLine($"Signals for {d:yyyy-MM-dd}");
-                        Console.WriteLine($"Signals for {d:yyyy-MM-dd}");
-
-                        foreach (var s in sig.Signals.Where(x => x.Date.Equals(d)))
-                        {
-                            sb.AppendLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
-                            Console.WriteLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                            var gen = new SignalGenerator { Symbol = s };
+                            var sym = currentlyOpen.Where(i => i.Item2 == s).Select(i => (DateTime?)i.Item1).FirstOrDefault();
+                            if (sym.HasValue)
+                            {
+                                var dte = sim.Data.DateHandler.GetPreviousDate(sym.Value);
+                                gen.ForceBuy = dte;
+                            }
+                            var x = gen.GenerateSignals();
+                            foreach (var d in x.Item1)
+                            {
+                                sig.AddSignal(d, s, true, false);
+                            }
+                            foreach (var d in x.Item2)
+                            {
+                                sig.AddSignal(d, s, false, true);
+                            }
+                            TargetSl.Add((s, gen.Target, gen.StopLoss));
                         }
 
-                        sb.AppendLine();
+                        foreach (var s in sig.Signals)
+                        {
+                            s.Date = sim.Data.DateHandler.GetNextDate(s.Date);
+                        }
 
-                    }
+                        var active = new List<(DateTime, string)>();
 
-                    sb.AppendLine($"Open");
-                    Console.WriteLine($"Open");
+                        foreach (var symbol in sig.Signals.Select(s => s.Symbol).Distinct())
+                        {
+                            var sym = sig.Signals.Where(s => s.Symbol == symbol).OrderByDescending(s => s.Date).First();
+                            if (sym.Buy) active.Add((sym.Date, sym.Symbol));
+                        }
 
-                    var fileContent = JsonSerialize(active);
-                    if (autoSignals) System.IO.File.WriteAllText(currentlyOpenPath, fileContent);
+                        var dt = sig.Signals.Max(s => s.Date);
 
-                    foreach (var (date, sym) in active.OrderBy(s => s.Item1))
+                        var dates = new List<DateTime>();
+
+                        while (dates.Count < 5)
+                        {
+                            dates.Add(dt);
+                            dt = sig.Signals.Where(s => s.Date < dt).Max(s => s.Date);
+                        }
+
+                        //if(!autoSignals) Console.ReadLine();
+
+                        var sb = new System.Text.StringBuilder();
+
+                        foreach (var d in dates.OrderBy(d => d))
+                        {
+
+                            sb.AppendLine($"Signals for {d:yyyy-MM-dd}");
+                            Console.WriteLine($"Signals for {d:yyyy-MM-dd}");
+
+                            foreach (var s in sig.Signals.Where(x => x.Date.Equals(d)))
+                            {
+                                sb.AppendLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                                Console.WriteLine($"{s.Symbol}, {(s.Buy ? "buy" : "sell")}");
+                            }
+
+                            sb.AppendLine();
+
+                        }
+
+                        sb.AppendLine($"Open");
+                        Console.WriteLine($"Open");
+
+                        var fileContent = JsonSerialize(active);
+                        if (autoSignals) System.IO.File.WriteAllText(currentlyOpenPath, fileContent);
+
+                        foreach (var (date, sym) in active.OrderBy(s => s.Item1))
+                        {
+                            var TS = TargetSl.Where(t => t.Item1 == sym).First();
+                            sb.AppendLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
+                            Console.WriteLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
+                        }
+
+                        if (autoSignals) System.IO.File.WriteAllText(signalsPath, sb.ToString());
+
+                        if (autoSignals) return;
+
+                        Console.ReadLine();
+
+                        continue;
+
+                    }catch(Exception ex)
                     {
-                        var TS = TargetSl.Where(t => t.Item1 == sym).First();
-                        sb.AppendLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
-                        Console.WriteLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
+                      
+                        if (!autoSignals) throw; 
+                                                    
+                        System.IO.File.WriteAllText(signalsPath + ".error.txt", ex.ToString());
+
+                        return;
+                        
                     }
-
-                    if (autoSignals) System.IO.File.WriteAllText(signalsPath, sb.ToString());
-
-                    if (autoSignals) return;
-
-                    Console.ReadLine();
-
-                    continue;
 
                 }
 
