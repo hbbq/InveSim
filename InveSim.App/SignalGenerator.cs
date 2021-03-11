@@ -14,6 +14,7 @@ namespace InveSim.App
     {
 
         public string Symbol { get; set; }
+        public DateTime? ForceBuy { get; set; }
 
         public (List<DateTime>, List<DateTime>) GenerateSignals()
         {
@@ -132,6 +133,11 @@ namespace InveSim.App
 
                 sell &= HODL <= 0;
                 buy &= HODL <= 0;
+
+                if(ForceBuy.HasValue && ForceBuy.Value == point.Date)
+                {
+                    buy = true;
+                }
 
                 if (buy)
                 {

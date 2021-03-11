@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
@@ -47,6 +48,7 @@ namespace InveSim.App
 
             var signalsPath = Path.Combine(dataFilePath, $"Invesim");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
+            var currentlyOpenPath = Path.Combine(signalsPath, "CurrentlyOpen.json");
             signalsPath = Path.Combine(signalsPath, $"Signals");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
             signalsPath = Path.Combine(signalsPath, $"{DateTime.Today:yyyy-MM-dd}.txt");
@@ -107,11 +109,20 @@ namespace InveSim.App
 
                     var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
 
+                    var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
+                    var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
+
                     foreach (var s in symbolList)
                     {
                         Console.WriteLine(s);
 
                         var gen = new SignalGenerator { Symbol = s };
+                        var sym = currentlyOpen.Where(i => i.Item2 == s).Select(i => (DateTime?)i.Item1).FirstOrDefault();
+                        if(sym.HasValue)
+                        {
+                            var dte = sim.Data.DateHandler.GetPreviousDate(sym.Value);
+                            gen.ForceBuy = dte;
+                        }
                         var x = gen.GenerateSignals();
                         foreach (var d in x.Item1)
                         {
@@ -169,6 +180,9 @@ namespace InveSim.App
                     sb.AppendLine($"Open");
                     Console.WriteLine($"Open");
 
+                    var fileContent = JsonSerialize(active);
+                    if (autoSignals) System.IO.File.WriteAllText(currentlyOpenPath, fileContent);
+
                     foreach (var (date, sym) in active.OrderBy(s => s.Item1))
                     {
                         sb.AppendLine($"{date:yyyy-MM-dd} {sym}");
@@ -188,303 +202,7 @@ namespace InveSim.App
                 if (vecko)
                 {
 
-                    // V19 2020-05-04
-                    sig.Add("ASSA B  ", "20200504", "20200529");
-                    sig.Add("ICA     ", "20200504", "20200624");
-                    sig.Add("NVP     ", "20200504", "20200515");
-                    sig.Add("ATCO A  ", "20200505", "20200522");
-                    sig.Add("INVE B  ", "20200505", "20200515");
-                    sig.Add("RECI B  ", "20200505", "20200515");
-                    sig.Add("AKEL D  ", "20200507", "20200514");
-                    sig.Add("AXFO    ", "20200507", "20200716");
-                    sig.Add("TELIA   ", "20200507", "20200515");
-                    sig.Add("INTRUM  ", "20200508", "20200515");
-
-                    // V20 2020-05-11
-                    sig.Add("KLED    ", "20200513", "20200604");
-                    sig.Add("AEC     ", "20200514", "20200526");
-                    sig.Add("BULTEN  ", "20200514", "20200529");
-                    sig.Add("COMBI   ", "20200514", "20200528");
-                    sig.Add("HIQ     ", "20200514", "20200601");
-                    sig.Add("HUSQ B  ", "20200514", "20200520");
-                    sig.Add("LIAB    ", "20200514", "20200527");
-                    sig.Add("OP      ", "20200514", "20200625");
-                    sig.Add("PNDX B  ", "20200514", "20200526");
-                    sig.Add("RATO B  ", "20200514", "20200527");
-                    sig.Add("SHOT    ", "20200514", "20200528");
-                    sig.Add("TREL B  ", "20200514", "20200527");
-                    sig.Add("ESSITY B", "20200515", "20200608");
-                    sig.Add("GETI B  ", "20200515", "20200608");
-
-                    // V21 2020-05-18
-                    sig.Add("ISR     ", "20200518", "20200615");
-                    sig.Add("PAPI    ", "20200519", "20200708");
-                    sig.Add("ARJO B  ", "20200522", "20200616");
-                    sig.Add("OASM    ", "20200522", "20200612");
-
-                    // V22 2020-05-25
-                    sig.Add("ENERS   ", "20200525", "20200623");
-                    sig.Add("RNBS    ", "20200525", "20200603");
-                    sig.Add("GCOR    ", "20200527", "20200617");
-                    sig.Add("CLEM    ", "20200528", "20200701");
-
-                    // V23 2020-06-01
-                    sig.Add("BUSER   ", "20200602", "20200715");
-                    sig.Add("SAXG    ", "20200604", "20200728");
-
-                    // V24 2020-06-08
-                    sig.Add("ACARIX  ", "20200612", "20200716");
-                    sig.Add("ASSA B  ", "20200612", "20200716");
-                    sig.Add("ATCO B  ", "20200612", "20200618");
-                    sig.Add("ATT     ", "20200612", "20200713");
-                    sig.Add("BALD B  ", "20200612", "20200807");
-                    sig.Add("ERIC B  ", "20200612", "20200707");
-                    sig.Add("FING B  ", "20200612", "20200701");
-                    sig.Add("INVE B  ", "20200612", "20200618");
-                    sig.Add("SEB A   ", "20200612", "20200714");
-                    sig.Add("SKA B   ", "20200612", "20200731");
-                    sig.Add("TELIA   ", "20200612", "20200622");
-
-                    // V25 2020-06-15
-                    sig.Add("AAC     ", "20200615", "20200713");
-                    sig.Add("DUST    ", "20200615", "20200706");
-                    sig.Add("INDU C  ", "20200615", "20200807");
-                    sig.Add("OASM    ", "20200615", "20200629");
-                    sig.Add("SAAB B  ", "20200615", "20200720");
-
-                    // V26 2020-06-22
-                    sig.Add("CTM     ", "20200623", "20200721");
-                    sig.Add("HOFI    ", "20200623", "20200714");
-                    sig.Add("NDA SE  ", "20200623", "20200629");
-                    sig.Add("SHOT    ", "20200623", "20200723");
-                    sig.Add("EPRO B  ", "20200624", "20200720");
-                    sig.Add("AZN     ", "20200625", "20200716");
-                    sig.Add("SWED A  ", "20200625", "20200709");
-                    sig.Add("FABG    ", "20200625", "20200819");
-                    sig.Add("SKIS B  ", "20200625", "20200728");
-                    sig.Add("BILI A  ", "20200625", "20200720");
-                    sig.Add("COLL    ", "20200625", "20200716");
-                    sig.Add("GENO    ", "20200625", "20200703");
-                    sig.Add("PREC    ", "20200625", "20200724");
-
-                    // V27 2020-06-29
-                    sig.Add("ADDV B  ", "20200629", "20200716");
-                    sig.Add("HM B    ", "20200629", "20200811");
-                    sig.Add("OASM    ", "20200630", "20200819");
-                    sig.Add("SENS    ", "20200702", "20200804");
-
-                    // V28 2020-07-06
-                    sig.Add("DIOS    ", "20200710", "20200728");
-
-                    // V29 2020-07-13
-                    sig.Add("ENERS   ", "20200714", "20200916");
-                    sig.Add("TOBII   ", "20200717", "20200807");
-
-                    // V30 2020-07-20
-                    sig.Add("SCA B   ", "20200720", "20200727");
-                    sig.Add("GUNN    ", "20200721", "20200929");
-                    //sig.Add("SHB A   ", "20200721", null);
-                    sig.Add("ICA     ", "20200722", "20200812");
-                    sig.Add("NETI B  ", "20200722", "20200728");
-                    sig.Add("SKF B   ", "20200722", "20200730");
-                    sig.Add("LUC     ", "20200723", "20200810");
-
-                    // V31 2020-07-27
-                    sig.Add("DUST    ", "20200728", "20200827");
-                    sig.Add("ASSA B  ", "20200731", "20200916");
-                    sig.Add("CLAS B  ", "20200731", "20200810");
-
-                    // V32 2020-08-03
-                    sig.Add("ABB     ", "20200803", "20200812");
-                    sig.Add("TELIA   ", "20200803", "20200901");
-                    sig.Add("TREL B  ", "20200803", "20200812");
-                    sig.Add("VOLV B  ", "20200803", "20200812");
-
-                    // V33 2020-08-10
-                    sig.Add("AZN     ", "20200811", "20200904");
-                    sig.Add("GETI B  ", "20200811", "20200831");
-
-                    // V34 2020-08-17
-                    sig.Add("PNDX B  ", "20200818", "20200825");
-                    sig.Add("SHOT    ", "20200819", "20200923");
-                    sig.Add("MYFC    ", "20200820", "20201008");
-                    sig.Add("OP      ", "20200821", "20201007");
-
-                    // V35 2020-08-24
-                    sig.Add("LUNE    ", "20200824", "20200904");
-                    sig.Add("ENZY    ", "20200825", "20200902");
-
-                    // V36 2020-08-31
-                    sig.Add("ALFA    ", "20200901", "20200922");
-                    sig.Add("BONAV B ", "20200901", "20200908");
-                    sig.Add("OASM    ", "20200901", "20200918");
-                    sig.Add("SAAB B  ", "20200901", "20200925");
-                    sig.Add("SECU B  ", "20200901", "20200915");
-                    sig.Add("AOI     ", "20200902", "20200908");
-                    //sig.Add("GCOR    ", "20200902", null);
-                    sig.Add("OBAB    ", "20200902", "20201012");
-                    sig.Add("BMAX    ", "20200903", "20200929");
-                    sig.Add("IPCO    ", "20200903", "20200922");
-                    sig.Add("BETS B  ", "20200904", "20200922");
-                    sig.Add("EPIS B  ", "20200904", "20200915");
-                    sig.Add("PEAB B  ", "20200904", "20200911");
-
-                    // V37 2020-09-07
-                    sig.Add("NIBE B  ", "20200909", "20201022");
-
-                    // V380 2020-09-14
-                    sig.Add("BAYN    ", "20200915", "20200924");
-                    sig.Add("COMBI   ", "20200915", "20201013");
-                    sig.Add("HIQ     ", "20200915", "20200921");
-
-                    // V39 2020-09-21
-                    sig.Add("OV      ", "20200922", "20201026");
-                    sig.Add("SSAB A  ", "20200922", "20201006");
-                    sig.Add("TEL2 B  ", "20200922", "20201002");
-                    sig.Add("CTM     ", "20200923", "20200930");
-
-                    // V40 2020-09-28
-                    //sig.Add("EXPRS2  ", "20200929", null);
-                    sig.Add("INVAJO  ", "20200930", "20201029");
-                    sig.Add("COPP B  ", "20201001", "20201014");
-                    sig.Add("FING B  ", "20201002", "20201016");
-
-                    // V41 2020-10-05
-                    sig.Add("AXFO    ", "20201008", "20201014");
-                    sig.Add("EPIS B  ", "20201008", "20201027");
-                    sig.Add("MYFC    ", "20201009", "20201022");
-
-                    // V42 2020-10-12
-                    sig.Add("AZN     ", "20201015", "20201022");
-                    sig.Add("ANOT    ", "20201016", "20201029");
-                    sig.Add("AROC    ", "20201016", "20201022");
-                    sig.Add("GUNN    ", "20201016", "20201202"); //Avnotering 25,00kr
-
-                    // V43 2020-10-19
-                    sig.Add("ALELIO  ", "20201020", "20201028");
-                    sig.Add("CLA B   ", "20201020", "20201026");
-                    sig.Add("SNM     ", "20201020", "20201026");
-                    sig.Add("BILL    ", "20201021", "20201027");
-                    sig.Add("MTRS    ", "20201021", "20201029");
-                    sig.Add("SKIS B  ", "20201021", "20201027");
-                    sig.Add("SWMA    ", "20201021", "20201030");
-                    sig.Add("ATCO B  ", "20201022", "20201029");
-                    sig.Add("BALD B  ", "20201022", "20201028");
-                    sig.Add("BONAV B ", "20201022", "20201217");
-                    sig.Add("CAST    ", "20201022", "20201028");
-                    sig.Add("CE      ", "20201022", "20201028");
-                    sig.Add("FING B  ", "20201022", "20201130");
-                    sig.Add("LUNE    ", "20201022", "20201029");
-                    sig.Add("NDA SE  ", "20201022", "20201029");
-                    sig.Add("SKA B   ", "20201022", "20201028");
-                    sig.Add("VICO    ", "20201022", "20201028");
-
-                    // V44 2020-10-26
-                    sig.Add("EOLU B  ", "20201026", "20201030");
-                    sig.Add("HIQ     ", "20201026", "20201116"); //Avnotering 2020-11-13 72,00kr
-                    sig.Add("FABG    ", "20201027", "20201110");
-                    sig.Add("LATO B  ", "20201027", "20201104");
-                    sig.Add("NET B   ", "20201027", "20201111");
-                    sig.Add("INTRUM  ", "20201028", "20201111");
-                    sig.Add("ARCT    ", "20201029", "20210125");
-                    sig.Add("EVO     ", "20201029", "20201111");
-                    sig.Add("SNM     ", "20201030", "20210115");
-
-                    // V45 2020-11-02
-                    sig.Add("CLA B   ", "20201102", "20201201");
-
-                    // V46 2020-11-09
-
-                    // V47 2020-11-16
-                    sig.Add("HNSA    ", "20201118", "20201124");
-
-                    // V48 2020-11-23
-                    sig.Add("INTRUM  ", "20201123", "20201210");
-                    //sig.Add("KLOV B  ", "20201124", null);
-                    sig.Add("LATO B  ", "20201124", "20201207");
-                    sig.Add("ABB     ", "20201125", "20201222");
-                    sig.Add("BINV    ", "20201125", "20201203");
-                    sig.Add("ASSA B  ", "20201126", "20201202");
-
-                    // V49 2020-11-30
-                    sig.Add("BALD B  ", "20201201", "20201222");
-                    sig.Add("SAAB B  ", "20201201", "20201207");
-                    sig.Add("VOLV B  ", "20201203", "20201211");
-
-                    // V50 2020-12-07
-                    sig.Add("MEKO    ", "20201207", "20210108");
-                    sig.Add("SBB D   ", "20201208", "20200107");
-                    sig.Add("BRIG    ", "20201210", "20201222");
-
-                    // V51 2020-12-14
-                    sig.Add("BOL     ", "20201214", "20210105");
-                    sig.Add("HOFI    ", "20201215", "20201230");
-                    sig.Add("NOKIA SEK", "20201215", "20201222");
-                    sig.Add("SHB A   ", "20201215", "20210115");
-                    sig.Add("ACARIX  ", "20201216", "20201229");
-                    sig.Add("ELUX B  ", "20201218", "20210108");
-
-                    // V52 2020-12-21
-                    sig.Add("FING B  ", "20201221", "20210104");
-                    sig.Add("NDA SE  ", "20201221", "20210201");
-                    sig.Add("TELIA   ", "20201222", "20210121");
-
-                    // V53 2020-12-28
-                    sig.Add("AOI     ", "20201230", "20210111");
-
-                    // V1 2021-01-11
-                    sig.Add("CLA B   ", "20210112", "20210301");
-                    sig.Add("KNOW    ", "20210112", "20210118");
-                    sig.Add("SOBI    ", "20210113", "20210209");
-
-                    // V2 2021-01-18
-
-                    // V3 2021-01-25
-                    sig.Add("BRAV    ", "20210126", "20210215");
-                    sig.Add("BULTEN  ", "20210126", "20210203");
-                    sig.Add("LUNE    ", "20210126", "20210209");
-                    sig.Add("TANGI   ", "20210126", "20210201");
-                    sig.Add("AZA     ", "20210127", "20210203");
-                    sig.Add("ALFA    ", "20210128", "20210205");
-                    sig.Add("NASO    ", "20210128", null);
-                    sig.Add("SPEQT   ", "20210128", "20210303");
-
-                    // V4 2021-02-01
-
-                    // V5 2021-02-08
-                    sig.Add("ABB     ", "20210208", "20210309");
-                    sig.Add("TELIA   ", "20210209", "20210218");
-                    sig.Add("BINV    ", "20210210", "20210219");
-                    sig.Add("AERO    ", "20210211", null);
-
-                    // V6 2021-02-15
-                    sig.Add("EQT     ", "20210217", "20210223");
-                    sig.Add("FING B  ", "20210217", "20210223");
-                    sig.Add("ICA     ", "20210217", null);
-                    sig.Add("LUG     ", "20210218", null);
-                    sig.Add("NEWTON  ", "20210218", null);
-                    sig.Add("NOKIA SEK", "20210218", null);
-                    sig.Add("SKA B   ", "20210218", null);
-                    sig.Add("BOOZT   ", "20210219", "20210308");
-                    sig.Add("CAST    ", "20210219", null);
-                    sig.Add("PCELL   ", "20210219", "20210226");
-
-                    //V7 2021-02-22
-                    sig.Add("ORES    ", "20210222", "20210303");
-                    sig.Add("ESSITY B", "20210222", null);
-                    sig.Add("ENZY    ", "20210225", "20210308");
-
-                    //V8 2021-03-01
-                    sig.Add("TERRNT B", "20210305", null);
-
-                    //V9 2021-03-08
-                    sig.Add("AAC     ", "20210308", null);
-                    sig.Add("ATCO A  ", "20210308", null);
-                    sig.Add("ATCO B  ", "20210308", null);
-                    sig.Add("ERIC B  ", "20210308", null);
-                    sig.Add("EVO     ", "20210308", null);
-                    sig.Add("TOBIII  ", "20210308", null);
-
+                    AddSignals(sig);
 
                 }
 
@@ -635,6 +353,308 @@ namespace InveSim.App
 
         }
 
+        private static void AddSignals(Simulator.SignalDataHolder sig)
+        {
+            // V19 2020-05-04
+            sig.Add("ASSA B  ", "20200504", "20200529");
+            sig.Add("ICA     ", "20200504", "20200624");
+            sig.Add("NVP     ", "20200504", "20200515");
+            sig.Add("ATCO A  ", "20200505", "20200522");
+            sig.Add("INVE B  ", "20200505", "20200515");
+            sig.Add("RECI B  ", "20200505", "20200515");
+            sig.Add("AKEL D  ", "20200507", "20200514");
+            sig.Add("AXFO    ", "20200507", "20200716");
+            sig.Add("TELIA   ", "20200507", "20200515");
+            sig.Add("INTRUM  ", "20200508", "20200515");
+
+            // V20 2020-05-11
+            sig.Add("KLED    ", "20200513", "20200604");
+            sig.Add("AEC     ", "20200514", "20200526");
+            sig.Add("BULTEN  ", "20200514", "20200529");
+            sig.Add("COMBI   ", "20200514", "20200528");
+            sig.Add("HIQ     ", "20200514", "20200601");
+            sig.Add("HUSQ B  ", "20200514", "20200520");
+            sig.Add("LIAB    ", "20200514", "20200527");
+            sig.Add("OP      ", "20200514", "20200625");
+            sig.Add("PNDX B  ", "20200514", "20200526");
+            sig.Add("RATO B  ", "20200514", "20200527");
+            sig.Add("SHOT    ", "20200514", "20200528");
+            sig.Add("TREL B  ", "20200514", "20200527");
+            sig.Add("ESSITY B", "20200515", "20200608");
+            sig.Add("GETI B  ", "20200515", "20200608");
+
+            // V21 2020-05-18
+            sig.Add("ISR     ", "20200518", "20200615");
+            sig.Add("PAPI    ", "20200519", "20200708");
+            sig.Add("ARJO B  ", "20200522", "20200616");
+            sig.Add("OASM    ", "20200522", "20200612");
+
+            // V22 2020-05-25
+            sig.Add("ENERS   ", "20200525", "20200623");
+            sig.Add("RNBS    ", "20200525", "20200603");
+            sig.Add("GCOR    ", "20200527", "20200617");
+            sig.Add("CLEM    ", "20200528", "20200701");
+
+            // V23 2020-06-01
+            sig.Add("BUSER   ", "20200602", "20200715");
+            sig.Add("SAXG    ", "20200604", "20200728");
+
+            // V24 2020-06-08
+            sig.Add("ACARIX  ", "20200612", "20200716");
+            sig.Add("ASSA B  ", "20200612", "20200716");
+            sig.Add("ATCO B  ", "20200612", "20200618");
+            sig.Add("ATT     ", "20200612", "20200713");
+            sig.Add("BALD B  ", "20200612", "20200807");
+            sig.Add("ERIC B  ", "20200612", "20200707");
+            sig.Add("FING B  ", "20200612", "20200701");
+            sig.Add("INVE B  ", "20200612", "20200618");
+            sig.Add("SEB A   ", "20200612", "20200714");
+            sig.Add("SKA B   ", "20200612", "20200731");
+            sig.Add("TELIA   ", "20200612", "20200622");
+
+            // V25 2020-06-15
+            sig.Add("AAC     ", "20200615", "20200713");
+            sig.Add("DUST    ", "20200615", "20200706");
+            sig.Add("INDU C  ", "20200615", "20200807");
+            sig.Add("OASM    ", "20200615", "20200629");
+            sig.Add("SAAB B  ", "20200615", "20200720");
+
+            // V26 2020-06-22
+            sig.Add("CTM     ", "20200623", "20200721");
+            sig.Add("HOFI    ", "20200623", "20200714");
+            sig.Add("NDA SE  ", "20200623", "20200629");
+            sig.Add("SHOT    ", "20200623", "20200723");
+            sig.Add("EPRO B  ", "20200624", "20200720");
+            sig.Add("AZN     ", "20200625", "20200716");
+            sig.Add("SWED A  ", "20200625", "20200709");
+            sig.Add("FABG    ", "20200625", "20200819");
+            sig.Add("SKIS B  ", "20200625", "20200728");
+            sig.Add("BILI A  ", "20200625", "20200720");
+            sig.Add("COLL    ", "20200625", "20200716");
+            sig.Add("GENO    ", "20200625", "20200703");
+            sig.Add("PREC    ", "20200625", "20200724");
+
+            // V27 2020-06-29
+            sig.Add("ADDV B  ", "20200629", "20200716");
+            sig.Add("HM B    ", "20200629", "20200811");
+            sig.Add("OASM    ", "20200630", "20200819");
+            sig.Add("SENS    ", "20200702", "20200804");
+
+            // V28 2020-07-06
+            sig.Add("DIOS    ", "20200710", "20200728");
+
+            // V29 2020-07-13
+            sig.Add("ENERS   ", "20200714", "20200916");
+            sig.Add("TOBII   ", "20200717", "20200807");
+
+            // V30 2020-07-20
+            sig.Add("SCA B   ", "20200720", "20200727");
+            sig.Add("GUNN    ", "20200721", "20200929");
+            //sig.Add("SHB A   ", "20200721", null);
+            sig.Add("ICA     ", "20200722", "20200812");
+            sig.Add("NETI B  ", "20200722", "20200728");
+            sig.Add("SKF B   ", "20200722", "20200730");
+            sig.Add("LUC     ", "20200723", "20200810");
+
+            // V31 2020-07-27
+            sig.Add("DUST    ", "20200728", "20200827");
+            sig.Add("ASSA B  ", "20200731", "20200916");
+            sig.Add("CLAS B  ", "20200731", "20200810");
+
+            // V32 2020-08-03
+            sig.Add("ABB     ", "20200803", "20200812");
+            sig.Add("TELIA   ", "20200803", "20200901");
+            sig.Add("TREL B  ", "20200803", "20200812");
+            sig.Add("VOLV B  ", "20200803", "20200812");
+
+            // V33 2020-08-10
+            sig.Add("AZN     ", "20200811", "20200904");
+            sig.Add("GETI B  ", "20200811", "20200831");
+
+            // V34 2020-08-17
+            sig.Add("PNDX B  ", "20200818", "20200825");
+            sig.Add("SHOT    ", "20200819", "20200923");
+            sig.Add("MYFC    ", "20200820", "20201008");
+            sig.Add("OP      ", "20200821", "20201007");
+
+            // V35 2020-08-24
+            sig.Add("LUNE    ", "20200824", "20200904");
+            sig.Add("ENZY    ", "20200825", "20200902");
+
+            // V36 2020-08-31
+            sig.Add("ALFA    ", "20200901", "20200922");
+            sig.Add("BONAV B ", "20200901", "20200908");
+            sig.Add("OASM    ", "20200901", "20200918");
+            sig.Add("SAAB B  ", "20200901", "20200925");
+            sig.Add("SECU B  ", "20200901", "20200915");
+            sig.Add("AOI     ", "20200902", "20200908");
+            //sig.Add("GCOR    ", "20200902", null);
+            sig.Add("OBAB    ", "20200902", "20201012");
+            sig.Add("BMAX    ", "20200903", "20200929");
+            sig.Add("IPCO    ", "20200903", "20200922");
+            sig.Add("BETS B  ", "20200904", "20200922");
+            sig.Add("EPIS B  ", "20200904", "20200915");
+            sig.Add("PEAB B  ", "20200904", "20200911");
+
+            // V37 2020-09-07
+            sig.Add("NIBE B  ", "20200909", "20201022");
+
+            // V380 2020-09-14
+            sig.Add("BAYN    ", "20200915", "20200924");
+            sig.Add("COMBI   ", "20200915", "20201013");
+            sig.Add("HIQ     ", "20200915", "20200921");
+
+            // V39 2020-09-21
+            sig.Add("OV      ", "20200922", "20201026");
+            sig.Add("SSAB A  ", "20200922", "20201006");
+            sig.Add("TEL2 B  ", "20200922", "20201002");
+            sig.Add("CTM     ", "20200923", "20200930");
+
+            // V40 2020-09-28
+            //sig.Add("EXPRS2  ", "20200929", null);
+            sig.Add("INVAJO  ", "20200930", "20201029");
+            sig.Add("COPP B  ", "20201001", "20201014");
+            sig.Add("FING B  ", "20201002", "20201016");
+
+            // V41 2020-10-05
+            sig.Add("AXFO    ", "20201008", "20201014");
+            sig.Add("EPIS B  ", "20201008", "20201027");
+            sig.Add("MYFC    ", "20201009", "20201022");
+
+            // V42 2020-10-12
+            sig.Add("AZN     ", "20201015", "20201022");
+            sig.Add("ANOT    ", "20201016", "20201029");
+            sig.Add("AROC    ", "20201016", "20201022");
+            sig.Add("GUNN    ", "20201016", "20201202"); //Avnotering 25,00kr
+
+            // V43 2020-10-19
+            sig.Add("ALELIO  ", "20201020", "20201028");
+            sig.Add("CLA B   ", "20201020", "20201026");
+            sig.Add("SNM     ", "20201020", "20201026");
+            sig.Add("BILL    ", "20201021", "20201027");
+            sig.Add("MTRS    ", "20201021", "20201029");
+            sig.Add("SKIS B  ", "20201021", "20201027");
+            sig.Add("SWMA    ", "20201021", "20201030");
+            sig.Add("ATCO B  ", "20201022", "20201029");
+            sig.Add("BALD B  ", "20201022", "20201028");
+            sig.Add("BONAV B ", "20201022", "20201217");
+            sig.Add("CAST    ", "20201022", "20201028");
+            sig.Add("CE      ", "20201022", "20201028");
+            sig.Add("FING B  ", "20201022", "20201130");
+            sig.Add("LUNE    ", "20201022", "20201029");
+            sig.Add("NDA SE  ", "20201022", "20201029");
+            sig.Add("SKA B   ", "20201022", "20201028");
+            sig.Add("VICO    ", "20201022", "20201028");
+
+            // V44 2020-10-26
+            sig.Add("EOLU B  ", "20201026", "20201030");
+            sig.Add("HIQ     ", "20201026", "20201116"); //Avnotering 2020-11-13 72,00kr
+            sig.Add("FABG    ", "20201027", "20201110");
+            sig.Add("LATO B  ", "20201027", "20201104");
+            sig.Add("NET B   ", "20201027", "20201111");
+            sig.Add("INTRUM  ", "20201028", "20201111");
+            sig.Add("ARCT    ", "20201029", "20210125");
+            sig.Add("EVO     ", "20201029", "20201111");
+            sig.Add("SNM     ", "20201030", "20210115");
+
+            // V45 2020-11-02
+            sig.Add("CLA B   ", "20201102", "20201201");
+
+            // V46 2020-11-09
+
+            // V47 2020-11-16
+            sig.Add("HNSA    ", "20201118", "20201124");
+
+            // V48 2020-11-23
+            sig.Add("INTRUM  ", "20201123", "20201210");
+            //sig.Add("KLOV B  ", "20201124", null);
+            sig.Add("LATO B  ", "20201124", "20201207");
+            sig.Add("ABB     ", "20201125", "20201222");
+            sig.Add("BINV    ", "20201125", "20201203");
+            sig.Add("ASSA B  ", "20201126", "20201202");
+
+            // V49 2020-11-30
+            sig.Add("BALD B  ", "20201201", "20201222");
+            sig.Add("SAAB B  ", "20201201", "20201207");
+            sig.Add("VOLV B  ", "20201203", "20201211");
+
+            // V50 2020-12-07
+            sig.Add("MEKO    ", "20201207", "20210108");
+            sig.Add("SBB D   ", "20201208", "20200107");
+            sig.Add("BRIG    ", "20201210", "20201222");
+
+            // V51 2020-12-14
+            sig.Add("BOL     ", "20201214", "20210105");
+            sig.Add("HOFI    ", "20201215", "20201230");
+            sig.Add("NOKIA SEK", "20201215", "20201222");
+            sig.Add("SHB A   ", "20201215", "20210115");
+            sig.Add("ACARIX  ", "20201216", "20201229");
+            sig.Add("ELUX B  ", "20201218", "20210108");
+
+            // V52 2020-12-21
+            sig.Add("FING B  ", "20201221", "20210104");
+            sig.Add("NDA SE  ", "20201221", "20210201");
+            sig.Add("TELIA   ", "20201222", "20210121");
+
+            // V53 2020-12-28
+            sig.Add("AOI     ", "20201230", "20210111");
+
+            // V1 2021-01-11
+            sig.Add("CLA B   ", "20210112", "20210301");
+            sig.Add("KNOW    ", "20210112", "20210118");
+            sig.Add("SOBI    ", "20210113", "20210209");
+
+            // V2 2021-01-18
+
+            // V3 2021-01-25
+            sig.Add("BRAV    ", "20210126", "20210215");
+            sig.Add("BULTEN  ", "20210126", "20210203");
+            sig.Add("LUNE    ", "20210126", "20210209");
+            sig.Add("TANGI   ", "20210126", "20210201");
+            sig.Add("AZA     ", "20210127", "20210203");
+            sig.Add("ALFA    ", "20210128", "20210205");
+            sig.Add("NASO    ", "20210128", null);
+            sig.Add("SPEQT   ", "20210128", "20210303");
+
+            // V4 2021-02-01
+
+            // V5 2021-02-08
+            sig.Add("ABB     ", "20210208", "20210309");
+            sig.Add("TELIA   ", "20210209", "20210218");
+            sig.Add("BINV    ", "20210210", "20210219");
+            sig.Add("AERO    ", "20210211", null);
+
+            // V6 2021-02-15
+            sig.Add("EQT     ", "20210217", "20210223");
+            sig.Add("FING B  ", "20210217", "20210223");
+            sig.Add("ICA     ", "20210217", null);
+            sig.Add("LUG     ", "20210218", null);
+            sig.Add("NEWTON  ", "20210218", "20210225");
+            sig.Add("NOKIA SEK", "20210218", null);
+            sig.Add("SKA B   ", "20210218", null);
+            sig.Add("BOOZT   ", "20210219", "20210308");
+            sig.Add("CAST    ", "20210219", null);
+            sig.Add("PCELL   ", "20210219", "20210226");
+
+            //V7 2021-02-22
+            sig.Add("ORES    ", "20210222", "20210303");
+            sig.Add("ESSITY B", "20210222", null);
+            sig.Add("ENZY    ", "20210225", "20210308");
+
+            //V8 2021-03-01
+            sig.Add("TERRNT B", "20210305", null);
+
+            //V9 2021-03-08
+            sig.Add("AAC     ", "20210308", null);
+            sig.Add("ATCO A  ", "20210308", null);
+            sig.Add("ATCO B  ", "20210308", null);
+            sig.Add("ERIC B  ", "20210308", null);
+            sig.Add("EVO     ", "20210308", null);
+            sig.Add("TOBII   ", "20210308", null);
+            sig.Add("NXTMS   ", "20210310", null);
+
+        }
+
         private static void Sim_OnLog(object sender, Simulator.Simulator.LogEventArgs e)
         {
             Console.WriteLine(e.Message);
@@ -706,6 +726,38 @@ namespace InveSim.App
 
             return (decimal)sizes[row];
 
+        }
+
+        public static string JsonSerialize(object o)
+        {
+            var serializer = new JsonSerializer
+            {
+                //serializer.Formatting = Formatting.Indented;
+                NullValueHandling = NullValueHandling.Ignore,
+                DateFormatString = "yyMMdd"
+            };
+
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, o);
+                return writer.ToString();
+            }
+        }
+
+        public static T JsonDeserialize<T>(string serialized) where T: new()
+        {
+            if (string.IsNullOrWhiteSpace(serialized)) return new T();
+            var serializer = new JsonSerializer
+            {
+                //serializer.Formatting = Formatting.Indented;
+                NullValueHandling = NullValueHandling.Ignore,
+                DateFormatString = "yyMMdd"
+            };
+            using (var tr = new StringReader(serialized))
+            using (var reader = new JsonTextReader(tr))
+            {
+                return (T)serializer.Deserialize<T>(reader);
+            }
         }
 
     }
