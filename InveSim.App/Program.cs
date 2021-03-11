@@ -121,9 +121,16 @@ namespace InveSim.App
                     var x = gen.GenerateSignals();
 
                     Console.WriteLine("Date;Open;High;Low;Close;BuyLine;SellLine;StopLoss;In");
+                    var pb = gen.Days[0].In;
+
                     foreach(var day in gen.Days)
                     {
-                        Console.WriteLine($"{day.Date:yyyy-MM-dd};{day.Open:###0.00};{day.High:###0.00};{day.Low:###0.00};{day.Close:###0.00};{day.BuyLine:###0.00};{day.SellLine:###0.00};{day.StopLoss:###0.00};{(day.In ? 1 : 0)}");
+                        var sl = day.StopLoss <= 0 ? "" : day.StopLoss.ToString("###0.00");
+                        var inn = day.In == pb ? "" : (day.In ? "1" : "0");
+
+                        pb = day.In;
+
+                        Console.WriteLine($"{day.Date:yyyy-MM-dd};{day.Open:###0.00};{day.High:###0.00};{day.Low:###0.00};{day.Close:###0.00};{day.BuyLine:###0.00};{day.SellLine:###0.00};{sl};{inn}");
                     }
 
                     continue;
