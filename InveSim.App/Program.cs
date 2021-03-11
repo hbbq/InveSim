@@ -84,6 +84,7 @@ namespace InveSim.App
                     Console.WriteLine("3 - Simulate signalllist, only high volume");
                     Console.WriteLine("4 - Update values");
                     Console.WriteLine("5 - Generate signals");
+                    Console.WriteLine("6 - Get signal data");
                     Console.WriteLine("0 - Exit");
                     var s = Console.ReadLine();
                     choice = int.TryParse(s, out var x) ? x : -1;
@@ -102,6 +103,32 @@ namespace InveSim.App
 
                 var sig = sim.Data.Signals;
 
+                if (choice == 6)
+                {
+
+                    Console.Write("Symbol: ");
+                    var symbol = Console.ReadLine();
+
+                    var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
+                    var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
+                    var gen = new SignalGenerator { Symbol = symbol };
+                    var sym = currentlyOpen.Where(i => i.Item2 == symbol).Select(i => (DateTime?)i.Item1).FirstOrDefault();
+                    if (sym.HasValue)
+                    {
+                        var dte = sim.Data.DateHandler.GetPreviousDate(sym.Value);
+                        gen.ForceBuy = dte;
+                    }
+                    var x = gen.GenerateSignals();
+
+                    Console.WriteLine("Date;Open;High;Low;Close;BuyLine;SellLine;StopLoss;In");
+                    foreach(var day in gen.Days)
+                    {
+                        Console.WriteLine($"{day.Date:yyyy-MM-dd};{day.Open:###0.00};{day.High:###0.00};{day.Low:###0.00};{day.Close:###0.00};{day.BuyLine:###0.00};{day.SellLine:###0.00};{day.StopLoss:###0.00};{(day.In ? 1 : 0)}");
+                    }
+
+                    continue;
+
+                }
                 if (choice == 5)
                 {
 

@@ -18,9 +18,12 @@ namespace InveSim.App
 
         public double StopLoss { get; set; }
         public double Target { get; set; }
+        public List<Day> Days;
 
         public (List<DateTime>, List<DateTime>) GenerateSignals()
         {
+
+            Days = new List<Day>();
 
             var bs = new List<DateTime>();
             var ss = new List<DateTime>();
@@ -174,6 +177,19 @@ namespace InveSim.App
 
                 //Console.WriteLine($"{point.Date}, {buyline}, {sellline}, {sl}");
 
+                Days.Add(new Day()
+                {
+                    Date = point.Date,
+                    Open = point.Open,
+                    High = point.High,
+                    Low = point.Low,
+                    Close = point.Close,
+                    BuyLine = buyline,
+                    SellLine = sellline,
+                    StopLoss = sl,
+                    In = isIn
+                });
+
             }
 
             return (bs, ss);
@@ -222,6 +238,19 @@ namespace InveSim.App
             }
 
             return ATR;
+        }
+
+        public class Day
+        {
+            public DateTime Date;
+            public double Open;
+            public double High;
+            public double Low;
+            public double Close;
+            public double BuyLine;
+            public double SellLine;
+            public double StopLoss;
+            public bool In;
         }
 
     }
