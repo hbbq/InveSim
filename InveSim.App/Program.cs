@@ -108,9 +108,11 @@ namespace InveSim.App
                     sig.Signals.Clear();
 
                     var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
-
+                    
                     var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
                     var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
+
+                    var TargetSl = new List<(string, double, double)>();
 
                     foreach (var s in symbolList)
                     {
@@ -132,6 +134,7 @@ namespace InveSim.App
                         {
                             sig.AddSignal(d, s, false, true);
                         }
+                        TargetSl.Add((s, gen.Target, gen.StopLoss));
                     }
 
                     foreach (var s in sig.Signals)
@@ -185,8 +188,9 @@ namespace InveSim.App
 
                     foreach (var (date, sym) in active.OrderBy(s => s.Item1))
                     {
-                        sb.AppendLine($"{date:yyyy-MM-dd} {sym}");
-                        Console.WriteLine($"{date:yyyy-MM-dd} {sym}");
+                        var TS = TargetSl.Where(t => t.Item1 == sym).First();
+                        sb.AppendLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
+                        Console.WriteLine($"{date:yyyy-MM-dd} {sym} Target: {TS.Item2:####0.00} StopLoss: {TS.Item3:####0.00}");
                     }
 
                     if (autoSignals) System.IO.File.WriteAllText(signalsPath, sb.ToString());

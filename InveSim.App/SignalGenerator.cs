@@ -16,6 +16,9 @@ namespace InveSim.App
         public string Symbol { get; set; }
         public DateTime? ForceBuy { get; set; }
 
+        public double StopLoss { get; set; }
+        public double Target { get; set; }
+
         public (List<DateTime>, List<DateTime>) GenerateSignals()
         {
 
@@ -114,6 +117,8 @@ namespace InveSim.App
                 var buy = smin >= lmin && srange / lrange < 0.7 && point.Close <= buyline;
                 var sell = point.Close > sellline;
 
+                Target = sellline;
+
                 if (HODL > 0) HODL--;
 
                 //if (point.Date > new DateTime(2020, 06, 12))
@@ -122,6 +127,8 @@ namespace InveSim.App
                 var nsl = point.Open - ATR(toThisDay, 14 * lfactor);
 
                 if (sl == -1) sl = nsl;
+
+                StopLoss = sl;
 
                 var usl = Math.Max(sl, sl + slema - EMA(lows, slemal, 1));
 
