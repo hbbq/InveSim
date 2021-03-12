@@ -251,6 +251,10 @@ namespace InveSim.App
             public double SellLine;
             public double StopLoss;
             public bool In;
+
+            public double LowestValue() => new[] { Low, BuyLine, SellLine }.Min();
+            public double HighestValue() => new[] { Low, BuyLine, SellLine }.Max();
+
         }
 
     }

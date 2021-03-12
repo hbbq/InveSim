@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using YahooFinanceAPI;
 using YahooFinanceAPI.Models;
+using Microsoft.Office.Interop;
 
 namespace InveSim.App
 {
@@ -46,8 +47,10 @@ namespace InveSim.App
             var dataFilePath = Path.Combine(dropboxPath, "Data");
             if (!Directory.Exists(dataFilePath)) Directory.CreateDirectory(dataFilePath);
 
+
             var signalsPath = Path.Combine(dataFilePath, $"Invesim");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
+            var templatePath = Path.Combine(signalsPath, "SignalChart.xlsx");
             var currentlyOpenPath = Path.Combine(signalsPath, "CurrentlyOpen.json");
             signalsPath = Path.Combine(signalsPath, $"Signals");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
@@ -79,9 +82,9 @@ namespace InveSim.App
 
                 while (choice < 0)
                 {
-                    Console.WriteLine("1 - Simulate vecko");
-                    Console.WriteLine("2 - Simulate signallista");
-                    Console.WriteLine("3 - Simulate signalllist, only high volume");
+                    Console.WriteLine("1 - Simulate v");
+                    Console.WriteLine("2 - Simulate s");
+                    Console.WriteLine("3 - Simulate s, ohv");
                     Console.WriteLine("4 - Update values");
                     Console.WriteLine("5 - Generate signals");
                     Console.WriteLine("6 - Get signal data");
@@ -131,6 +134,53 @@ namespace InveSim.App
                         pb = day.In;
 
                         Console.WriteLine($"{day.Date:yyyy-MM-dd};{day.Open:###0.00};{day.High:###0.00};{day.Low:###0.00};{day.Close:###0.00};{day.BuyLine:###0.00};{day.SellLine:###0.00};{sl};{inn}");
+                    }
+
+                    while (true)
+                    {
+
+                        Console.WriteLine();
+                        Console.Write("Create chart (Y/N): ");
+
+                        if (Console.ReadLine().ToLowerInvariant() == "y")
+                        {
+
+                            DateTime? startDate = null;
+                            var def = DateTime.Today.AddMonths(-3).ToString("yyyyMMdd");
+                            while (!startDate.HasValue)
+                            {
+                                Console.Write($"Enter start date (yyyyMMdd) [{def}]: ");
+                                var inp = Console.ReadLine();
+                                if (inp == "") inp = def;
+                                if (DateTime.TryParseExact(inp, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var v))
+                                {
+                                    startDate = v;
+                                }
+                            }
+
+                            DateTime? endDate = null;
+                            def = DateTime.Today.ToString("yyyyMMdd");
+                            while (!endDate.HasValue)
+                            {
+                                Console.Write($"Enter end date (yyyyMMdd) [{def}]: ");
+                                var inp = Console.ReadLine();
+                                if (inp == "") inp = def;
+                                if (DateTime.TryParseExact(inp, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var v))
+                                {
+                                    endDate = v;
+                                }
+                            }
+
+                            var activeRange = gen.Days.Where(d => d.Date >= startDate && d.Date <= endDate).ToList();
+
+                            CreateChart(activeRange, symbol, templatePath);
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+
                     }
 
                     continue;
@@ -815,6 +865,112 @@ namespace InveSim.App
             {
                 return (T)serializer.Deserialize<T>(reader);
             }
+        }
+
+        private static void CreateChart(List<SignalGenerator.Day> data, string symbol, string templatePath)
+        {
+
+            Console.WriteLine("Generating...");
+
+            var app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks books = null;
+            Microsoft.Office.Interop.Excel.Workbook book = null;
+
+            try
+            {
+
+                books = app.Workbooks;
+                book = books.Open(templatePath);
+
+                app.Calculation = Microsoft.Office.Interop.Excel.XlCalculation.xlCalculationManual;
+                app.ScreenUpdating = false;
+
+                Microsoft.Office.Interop.Excel.Chart sheetG = book.Charts[1];
+                Microsoft.Office.Interop.Excel.Worksheet sheet = book.Worksheets[1];
+
+                sheet.Activate();
+
+                var mindate = data.Min(d => d.Date);
+                var maxdate = data.Max(d => d.Date);
+                var lowest = data.Min(d => d.LowestValue());
+                var highest = data.Max(d => d.HighestValue());
+
+                var range = highest - lowest;
+
+                lowest -= (range * 0.05);
+                highest += (range * 0.05);
+
+                if (lowest < 0) lowest = 0;
+
+                var title = $"{symbol.ToUpper()}: {mindate:yyyy-MM-dd} - {maxdate:yyyy-Mm-dd}";
+
+                ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[1, 10]).Value = title;
+
+                var row = 1;
+                var isin = data[0].In;
+                var p = 0;
+
+                foreach(var day in data)
+                {
+                    var np = row * 100 / data.Count;
+                    if(np != p)
+                    {
+                        Console.WriteLine($"{np}%");
+                        p = np;
+                    }
+                    row++;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 1]).Value = day.Date;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 2]).Value = day.Open;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 3]).Value = day.High;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 4]).Value = day.Low;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 5]).Value = day.Close;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 6]).Value = day.BuyLine;
+                    ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 7]).Value = day.SellLine;
+                    if(day.StopLoss > 0) ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 8]).Value = day.StopLoss;
+                    if (day.In != isin)
+                    {
+                        ((Microsoft.Office.Interop.Excel.Range)sheet.Cells[row, 9]).Value = day.In ? 1 : 0;
+                        isin = day.In;
+                    }
+                }
+
+                sheetG.Activate();
+
+                Console.WriteLine("Done");
+
+                app.Calculation = Microsoft.Office.Interop.Excel.XlCalculation.xlCalculationAutomatic;
+                app.ScreenUpdating = true;
+
+                var axis = sheetG.Axes(Microsoft.Office.Interop.Excel.XlAxisType.xlValue, Microsoft.Office.Interop.Excel.XlAxisGroup.xlPrimary) as Microsoft.Office.Interop.Excel.Axis;
+                lowest -= lowest % axis.MajorUnit;
+                highest += axis.MajorUnit;
+                highest -= highest % axis.MajorUnit;
+                axis.MinimumScale = lowest;
+                axis.MaximumScale = highest;
+
+                app.Visible = true;
+
+                Console.WriteLine("Press any key when ready");
+                Console.ReadKey();
+
+                            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+
+            try
+            {
+                if (book != null) book.Close(false);
+                if (books != null) books.Close();
+                app.Quit();     
+                for(var i = 0; i < 10; i++)
+                {
+                    GC.Collect();
+                }
+            }
+            catch { }
+
         }
 
     }
