@@ -735,17 +735,17 @@ namespace InveSim.App
             sig.Add("EQT     ", "20210217", "20210223");
             sig.Add("FING B  ", "20210217", "20210223");
             sig.Add("ICA     ", "20210217", null);
-            sig.Add("LUG     ", "20210218", null);
+            sig.Add("LUG     ", "20210218", "20210318");
             sig.Add("NEWTON  ", "20210218", "20210225");
             sig.Add("NOKIA SEK", "20210218", null);
-            sig.Add("SKA B   ", "20210218", null);
+            sig.Add("SKA B   ", "20210218", "20210316");
             sig.Add("BOOZT   ", "20210219", "20210308");
-            sig.Add("CAST    ", "20210219", null);
+            sig.Add("CAST    ", "20210219", "20210312");
             sig.Add("PCELL   ", "20210219", "20210226");
 
             //V8 2021-02-22
             sig.Add("ORES    ", "20210222", "20210303");
-            sig.Add("ESSITY B", "20210222", null);
+            sig.Add("ESSITY B", "20210222", "20210317");
             sig.Add("ENZY    ", "20210225", "20210308");
 
             //V9 2021-03-01
@@ -753,12 +753,16 @@ namespace InveSim.App
 
             //V10 2021-03-08
             sig.Add("AAC     ", "20210308", null);
-            sig.Add("ATCO A  ", "20210308", null);
-            sig.Add("ATCO B  ", "20210308", null);
-            sig.Add("ERIC B  ", "20210308", null);
-            sig.Add("EVO     ", "20210308", null);
+            sig.Add("ATCO A  ", "20210308", "20210312");
+            sig.Add("ATCO B  ", "20210308", "20210312");
+            sig.Add("ERIC B  ", "20210308", "20210312");
+            sig.Add("EVO     ", "20210308", "20210312");
             sig.Add("TOBII   ", "20210308", null);
             sig.Add("NXTMS   ", "20210310", null);
+
+            //V11 2021-03-15
+            sig.Add("RNBS    ", "20210315", null);
+            sig.Add("AOI     ", "20210318", null);
 
         }
 
