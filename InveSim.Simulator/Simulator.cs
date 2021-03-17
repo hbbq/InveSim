@@ -121,6 +121,11 @@ namespace InveSim.Simulator
                 if(Cash >= buyForWithMargin)
                 {
                     var count = Math.Floor(buyFor / Data.GetSymbol(signal.Symbol).GetClose(lastDate).Value);
+                    if (count == 0)
+                    {
+                        Log($"Could not buy {signal.Symbol}, price/each above maximum buying sum");
+                        continue;
+                    }
                     Cash -= count * Data.GetSymbol(signal.Symbol).GetOpen(CurrentDate).Value * (1 + Courtage);
                     Holdings.Add(new Holding(signal.Symbol, count, Data.GetSymbol(signal.Symbol).GetOpen(CurrentDate).Value, Data.GetSymbol(signal.Symbol).GetOpen(CurrentDate).Value * (1 + Courtage), CurrentDate));
                     Log($"Bought {count} {signal.Symbol}");
