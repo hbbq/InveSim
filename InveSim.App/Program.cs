@@ -160,6 +160,7 @@ namespace InveSim.App
 
                             DateTime? endDate = null;
                             def = DateTime.Today.ToString("yyyyMMdd");
+                            if(DateTime.Now.Hour < 17) def = DateTime.Today.AddDays(-1).ToString("yyyyMMdd");
                             while (!endDate.HasValue)
                             {
                                 Console.Write($"Enter end date (yyyyMMdd) [{def}]: ");
