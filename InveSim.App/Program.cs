@@ -759,11 +759,12 @@ namespace InveSim.App
             sig.Add("ERIC B  ", "20210308", "20210312");
             sig.Add("EVO     ", "20210308", "20210312");
             sig.Add("TOBII   ", "20210308", null);
-            sig.Add("NXTMS   ", "20210310", null);
+            sig.Add("NXTMS   ", "20210310", "20210322");
 
             //V11 2021-03-15
             sig.Add("RNBS    ", "20210315", null);
             sig.Add("AOI     ", "20210318", null);
+            sig.Add("HOFI    ", "20210319", null);
 
         }
 
