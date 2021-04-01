@@ -721,7 +721,7 @@ namespace InveSim.App
             sig.Add("TANGI   ", "20210126", "20210201");
             sig.Add("AZA     ", "20210127", "20210203");
             sig.Add("ALFA    ", "20210128", "20210205");
-            sig.Add("NASO    ", "20210128", null);
+            sig.Add("NASO    ", "20210128", "20210401");
             sig.Add("SPEQT   ", "20210128", "20210303");
 
             // V5 2021-02-01
@@ -735,7 +735,7 @@ namespace InveSim.App
             // V7 2021-02-15
             sig.Add("EQT     ", "20210217", "20210223");
             sig.Add("FING B  ", "20210217", "20210223");
-            sig.Add("ICA     ", "20210217", null);
+            sig.Add("ICA     ", "20210217", "20210324");
             sig.Add("LUG     ", "20210218", "20210318");
             sig.Add("NEWTON  ", "20210218", "20210225");
             sig.Add("NOKIA SEK", "20210218", null);
@@ -753,7 +753,7 @@ namespace InveSim.App
             sig.Add("TERRNT B", "20210305", null);
 
             //V10 2021-03-08
-            sig.Add("AAC     ", "20210308", null);
+            sig.Add("AAC     ", "20210308", "20210324");
             sig.Add("ATCO A  ", "20210308", "20210312");
             sig.Add("ATCO B  ", "20210308", "20210312");
             sig.Add("ERIC B  ", "20210308", "20210312");
@@ -762,9 +762,21 @@ namespace InveSim.App
             sig.Add("NXTMS   ", "20210310", "20210322");
 
             //V11 2021-03-15
-            sig.Add("RNBS    ", "20210315", null);
-            sig.Add("AOI     ", "20210318", null);
-            sig.Add("HOFI    ", "20210319", null);
+            sig.Add("RNBS    ", "20210315", "20210324");
+            sig.Add("AOI     ", "20210318", "20210326");
+            sig.Add("HOFI    ", "20210319", "20210325");
+
+            //V12 2021-03-22
+            sig.Add("BOL     ", "20210324", null);
+            sig.Add("RATO B  ", "20210324", null);
+            sig.Add("EOLU B  ", "20210325", null);
+            sig.Add("MAV     ", "20210325", null);
+
+            //V13 2021-03-29
+            sig.Add("SHOT    ", "20210329", null);
+            sig.Add("BONAV B ", "20210330", null);
+            sig.Add("BULTEN  ", "20210330", null);
+            sig.Add("OBAB    ", "20210330", null);
 
         }
 
