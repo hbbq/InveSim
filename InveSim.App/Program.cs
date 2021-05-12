@@ -51,6 +51,7 @@ namespace InveSim.App
             var signalsPath = Path.Combine(dataFilePath, $"Invesim");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
             var templatePath = Path.Combine(signalsPath, "SignalChart.xlsx");
+            var symbolsPath = Path.Combine(signalsPath, "Symbols.txt");
             var currentlyOpenPath = Path.Combine(signalsPath, "CurrentlyOpen.json");
             signalsPath = Path.Combine(signalsPath, $"Signals");
             if (!Directory.Exists(signalsPath)) Directory.CreateDirectory(signalsPath);
@@ -195,7 +196,7 @@ namespace InveSim.App
 
                         sig.Signals.Clear();
 
-                        var symbolList = Resource1.symbols.Split('\r').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+                        var symbolList = System.IO.File.ReadAllText(symbolsPath).Replace("\n", "").Split('\r').Where(s => !string.IsNullOrEmpty(s)).ToList();
 
                         var oldFile = System.IO.File.ReadAllText(currentlyOpenPath);
                         var currentlyOpen = JsonDeserialize<List<(DateTime, string)>>(oldFile);
